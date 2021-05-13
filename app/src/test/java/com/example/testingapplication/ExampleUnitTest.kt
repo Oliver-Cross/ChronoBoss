@@ -21,6 +21,6 @@ class ExampleUnitTest {
 
     @Test
     fun addition_is_corect_2(){
-        assertEquals(4, 2+2)
+        assertEquals(5, 3+2)
     }
 }
