@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- background circle of the loading bar -->
+    <item>
+        <shape
+            android:shape="ring"
+            android:thicknessRatio="16"
+            android:useLevel="false">
+            <solid android:color="#DDD"/>
+        </shape>
+    </item>
+<!-- foreground circle, denotes progress -->
+    <item>
+        <rotate
+            android:fromDegrees="270"
+            android:toDegrees="-90">
+            <shape
+                android:shape="ring"
+                android:thicknessRatio="16"
+                android:useLevel="true">
+                <gradient android:startColor="#0000FF"
+                    android:endColor="#00FF00"
+                    />
+
+            </shape>
+        </rotate>
+    </item>
+</layer-list>
