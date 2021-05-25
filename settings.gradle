@@ -1,0 +1,2 @@
+rootProject.name = "ChronoBoss"
+include ':app'
