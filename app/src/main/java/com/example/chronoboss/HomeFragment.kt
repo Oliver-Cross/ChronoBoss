@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.content.pm.PackageManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 // TODO: Rename parameter arguments, choose names that match
