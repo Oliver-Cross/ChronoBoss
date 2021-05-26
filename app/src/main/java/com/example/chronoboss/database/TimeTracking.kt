@@ -9,14 +9,7 @@ import java.text.DateFormat
 @Entity(tableName = "daily_time_tracking")
 data class TimeTracking(
     @PrimaryKey(autoGenerate = true)
-    var dayId: Long = 0L,
-
-    @ColumnInfo(name = "start_time_milli")
-    val startTimeMilli: Long = System.currentTimeMillis(),
-
-    @ColumnInfo(name = "end_time_milli")
-    var endTimeMilli: Long = startTimeMilli,
-
+    var dayId: Long,
     @ColumnInfo(name = "quality_rating")
-    var sleepQuality: Int = -1
+    var word: String
 )

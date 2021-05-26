@@ -1,10 +1,8 @@
 package com.example.chronoboss.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TimeDatabaseDao {
@@ -29,6 +27,14 @@ interface TimeDatabaseDao {
 
     @Query("SELECT * FROM daily_time_tracking ORDER BY dayId DESC")
     fun getAll(): LiveData<List<TimeTracking>>
+
+    // The flow always holds/caches latest version of data. Notifies its observers when the
+    // data has changed.
+    @Query("SELECT * FROM daily_time_tracking ORDER BY dayId ASC")
+    fun getAlphabetizedWords(): Flow<List<TimeTracking>>
+
+    @Query("DELETE FROM daily_time_tracking")
+    suspend fun deleteAll()
 }
 
 
