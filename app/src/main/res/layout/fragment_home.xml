@@ -64,7 +64,7 @@
         android:id="@+id/app_icon"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/Chronoboss_no_bg"
+        android:src="@drawable/chronoboss_no_bg"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="@+id/progressBar"
         app:layout_constraintHorizontal_bias="0.6"
