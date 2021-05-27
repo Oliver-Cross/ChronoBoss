@@ -1,14 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Toggles for: push notifications
+  Slider for time limit
+  Display top package (button) -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FDC6BC"
     tools:context=".SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/nav_bar_menu" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/option_push_notification_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:text="Push Notifications"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView" />
+
+    <TextView
+        android:id="@+id/option_top_package_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:text="App to track"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/option_push_notification_text" />
+
+    <TextView
+        android:id="@+id/option_budget_slider_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:text="App Budget"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/option_top_package_text" />
+
+    <Switch
+        android:id="@+id/option_push_notifications_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:switchMinWidth="60dp"
+        android:thumbTint="#03A9F4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/option_push_notification_text" />
+
+    <Button
+        android:id="@+id/option_top_package_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:text="Get App Info"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/option_top_package_text"
+        app:layout_constraintEnd_toEndOf="@+id/option_push_notifications_switch"
+        app:layout_constraintTop_toTopOf="@+id/option_top_package_text" />
+
+    <SeekBar
+        android:id="@+id/option_app_budget_slider"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="25dp"
+        android:indeterminate="false"
+        android:max="120"
+        android:progress="60"
+        android:progressTint="#4CAF50"
+        android:thumbTint="#03A9F4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/option_budget_slider_text" />
+
+    <TextView
+        android:id="@+id/app_budget_slider_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="placeholder: get value from slider"
+        app:layout_constraintEnd_toEndOf="@+id/option_app_budget_slider"
+        app:layout_constraintStart_toStartOf="@+id/option_app_budget_slider"
+        app:layout_constraintTop_toBottomOf="@+id/option_app_budget_slider" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
