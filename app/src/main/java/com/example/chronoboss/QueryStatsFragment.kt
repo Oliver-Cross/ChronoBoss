@@ -13,7 +13,6 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.provider.Settings
 import android.widget.TextView
-import java.util.*
 
 /** fragment class that queries usage statistics for the user */
 class QueryStatsFragment() : Fragment() {
@@ -56,7 +55,6 @@ class QueryStatsFragment() : Fragment() {
         val statsManager =
             context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
         val milliDay = 86400000
-        val calendar: Calendar = Calendar.getInstance()
         val endTime: Long = System.currentTimeMillis()
         val beginTime: Long = endTime - milliDay
         val usageSt: List<UsageStats> =
