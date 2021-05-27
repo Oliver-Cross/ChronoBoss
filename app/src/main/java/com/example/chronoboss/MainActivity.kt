@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goQueryStats(view:View) {
-        val intent = Intent(this, QueryStatsActivity::class.java)
+        val intent = Intent(this, TestActivity::class.java)
         startActivity(intent)
     }
 
