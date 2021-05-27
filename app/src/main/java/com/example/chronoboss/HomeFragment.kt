@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.Image
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -36,25 +37,44 @@ class HomeFragment : Fragment() {
         }
     } */
 
+    /**override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //setContentView(R.layout.fragment_home)
+        setContentView(R.layout.fragment_home
+        setIcon()
+    }*/
+
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        setIcon()
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view:View = inflater.inflate(R.layout.fragment_home, container, false)
+        val icon:ImageView = view.findViewById(R.id.app_icon)
+        val chrome:Drawable? = activity?.packageManager?.getApplicationIcon("com.android.chrome")
+        icon.setImageDrawable(chrome)
+        return view
     }
 
 
-    fun getIcon(): Drawable? {
+    /*fun getIcon(): Drawable? {
         return activity?.packageManager?.getApplicationIcon("com.android.chrome")
-    }
+    } */
 
-    fun setIcon() {
+    /*fun setIcon(){
+        val icon = activity?.packageManager?.getApplicationIcon("com.android.chrome")
         val view: ImageView? = activity?.findViewById(R.id.app_icon)
+        if(view != null){
+            view.setImageDrawable(icon)
+        }else print("view is null") */
+        //image.setImageDrawable(getIcon())
+        /*val view: ImageView? = activity?.findViewById(R.id.app_icon)
         if (view != null) {
             view.setImageDrawable(getIcon())
-        }
+
+        } */
+        //return image
     }
 
     /*companion object {
@@ -76,4 +96,3 @@ class HomeFragment : Fragment() {
                 }
             }
     } */
-}
