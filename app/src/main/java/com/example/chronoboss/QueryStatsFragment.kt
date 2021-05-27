@@ -1,5 +1,6 @@
 package com.example.chronoboss
 
+import android.app.AppOpsManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.content.Intent
 import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.Context
+import android.content.pm.ApplicationInfo
 import android.os.Parcel
 import android.os.Parcelable
 import android.provider.Settings
@@ -59,7 +61,9 @@ class QueryStatsFragment() : Fragment(), Parcelable {
 
         //requestUsageStatsPermission()
         //var stats:List<UsageStats> = getStats(context)
-        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+        if(!hasPermission()){
+            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+        }
         val statsManager =
             context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
         val milliDay = 86400000
@@ -125,6 +129,24 @@ class QueryStatsFragment() : Fragment(), Parcelable {
         return "default package"
 
     }
+
+    fun hasPermission():Boolean {
+
+        val applicationInform: ApplicationInfo? =
+            context?.packageName?.let { activity?.packageManager?.getApplicationInfo(it, 0) }
+        val appOps: AppOpsManager =
+            context?.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+        val mode: Int? = applicationInform?.let {
+            appOps.checkOpNoThrow(
+                AppOpsManager.OPSTR_GET_USAGE_STATS,
+                it.uid,
+                applicationInform.packageName
+            )
+        }
+        return (mode == AppOpsManager.MODE_ALLOWED)
+    }
+
+
 
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
