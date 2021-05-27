@@ -9,6 +9,8 @@ import android.content.Intent
 import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.Context
+import android.os.Parcel
+import android.os.Parcelable
 import android.provider.Settings
 import com.google.android.material.internal.ContextUtils
 import com.google.android.material.internal.ContextUtils.getActivity
@@ -25,7 +27,14 @@ import java.util.*
  * Use the [QueryStatsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class QueryStatsFragment : Fragment() {
+class QueryStatsFragment() : Fragment(), Parcelable {
+    private var top: UsageStats? = null
+    private var topPckName: String? = null
+
+    constructor(parcel: Parcel) : this() {
+        top = parcel.readParcelable(UsageStats::class.java.classLoader)
+        topPckName = parcel.readString()
+    }
     // TODO: Rename and change types of parameters
     /*private var param1: String? = null
     private var param2: String? = null
@@ -43,8 +52,33 @@ class QueryStatsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view:View = inflater.inflate(R.layout.fragment_query_stats, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_query_stats, container, false)
+
+        //requestUsageStatsPermission()
+        //var stats:List<UsageStats> = getStats(context)
+        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+        val statsManager =
+            context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+        val milliDay = 86400000
+        val calendar: Calendar = Calendar.getInstance()
+        val endTime: Long = calendar.timeInMillis
+        val beginTime: Long = endTime - milliDay
+        val usageSt: List<UsageStats> =
+            statsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, beginTime, endTime)
+        var timeUsed: Long = 0
+        var topPack: UsageStats? = null
+        for (pck in usageSt) {
+            if (pck.totalTimeInForeground > timeUsed) {
+                timeUsed = pck.totalTimeInForeground
+                topPack = pck
+            }
+        }
+        if (topPack != null) {
+            topPckName = topPack.packageName
+        }
+        //return inflater.inflate(R.layout.fragment_query_stats, container, false)
+        return view
     }
 
     fun requestUsageStatsPermission() {
@@ -52,10 +86,10 @@ class QueryStatsFragment : Fragment() {
     }
 
 
-    fun getStats(context: Context): List<UsageStats> {
+    fun getStats(context: Context?): List<UsageStats> {
         requestUsageStatsPermission()
         val statsManager =
-            context.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+            context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
         val milliDay = 86400000
         val calendar: Calendar = Calendar.getInstance()
         val endTime: Long = calendar.timeInMillis
@@ -65,7 +99,7 @@ class QueryStatsFragment : Fragment() {
         return usageSt
     }
 
-    fun getTopPackage(packageList:List<UsageStats>): String {
+    fun getTopPackage(packageList: List<UsageStats>): String {
         var timeUsed: Long = 0
         var topPack: UsageStats? = null
         for (pck in packageList) {
@@ -81,11 +115,32 @@ class QueryStatsFragment : Fragment() {
 
     }
 
-    fun setTopPackage(context:Context){
-        val ls = getStats(context)
-        //dataField = getTopPackage()
 
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeParcelable(top, flags)
+        parcel.writeString(topPckName)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<QueryStatsFragment> {
+        override fun createFromParcel(parcel: Parcel): QueryStatsFragment {
+            return QueryStatsFragment(parcel)
+        }
+
+        override fun newArray(size: Int): Array<QueryStatsFragment?> {
+            return arrayOfNulls(size)
+        }
+    }
 }
+
+/*fun setTopPackage(context:Context?){
+    val ls = getStats(context)
+    //dataField = getTopPackage()
+
+
 
 
 //UsageStatsManager mUsageStatsManager = (UsageStatsManager)getSystemService("usagestats");
@@ -96,22 +151,21 @@ class QueryStatsFragment : Fragment() {
 
 
 /*companion object {
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QueryStatsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    @JvmStatic
-    fun newInstance(param1: String, param2: String) =
-        QueryStatsFragment().apply {
-            arguments = Bundle().apply {
-                putString(ARG_PARAM1, param1)
-                putString(ARG_PARAM2, param2)
-            }
+/**
+ * Use this factory method to create a new instance of
+ * this fragment using the provided parameters.
+ *
+ * @param param1 Parameter 1.
+ * @param param2 Parameter 2.
+ * @return A new instance of fragment QueryStatsFragment.
+ */
+// TODO: Rename and change types and number of parameters
+@JvmStatic
+/*fun newInstance(param1: String, param2: String) =
+    QueryStatsFragment().apply {
+        arguments = Bundle().apply {
+            putString(ARG_PARAM1, param1)
+            putString(ARG_PARAM2, param2)
         }
+    }
 } */
-}
