@@ -31,6 +31,7 @@ import java.util.*
 class QueryStatsFragment() : Fragment(), Parcelable {
     private var top: UsageStats? = null
     private var topPckName: String? = null
+    private var topPckTime:Long? = null
 
     constructor(parcel: Parcel) : this() {
         top = parcel.readParcelable(UsageStats::class.java.classLoader)
@@ -63,24 +64,29 @@ class QueryStatsFragment() : Fragment(), Parcelable {
             context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
         val milliDay = 86400000
         val calendar: Calendar = Calendar.getInstance()
-        val endTime: Long = calendar.timeInMillis
+        val endTime: Long = System.currentTimeMillis()
         val beginTime: Long = endTime - milliDay
         val usageSt: List<UsageStats> =
             statsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, beginTime, endTime)
         var timeUsed: Long = 0
         var topPack: UsageStats? = null
         for (pck in usageSt) {
-            if (pck.totalTimeInForeground > timeUsed && (pck.packageName != "com.google.android.apps.nexuslauncher")) {
+            if (pck.totalTimeInForeground > timeUsed && (pck.packageName != "com.google.android.apps.nexuslauncher")
+                && (pck.packageName != "com.example.chronoboss")) {
                 timeUsed = pck.totalTimeInForeground
                 topPack = pck
             }
         }
         if (topPack != null) {
             topPckName = topPack.packageName
+            topPckTime = topPack.totalTimeInForeground
         }
 
         val setTopView: TextView? = view.findViewById(R.id.top_package_name)
         setTopView?.setText(topPckName)
+        val topTimeString:String? = topPckTime.toString()
+        val timeV:TextView? = view.findViewById(R.id.top_package_time)
+        timeV?.setText(topTimeString)
         //return inflater.inflate(R.layout.fragment_query_stats, container, false)
         return view
     }
@@ -94,12 +100,12 @@ class QueryStatsFragment() : Fragment(), Parcelable {
         requestUsageStatsPermission()
         val statsManager =
             context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-        val milliDay = 86400000
+        val milliDay = 3600000
         val calendar: Calendar = Calendar.getInstance()
         val endTime: Long = calendar.timeInMillis
         val beginTime: Long = endTime - milliDay
         val usageSt: List<UsageStats> =
-            statsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, beginTime, endTime)
+            statsManager.queryUsageStats(UsageStatsManager.INTERVAL_BEST, beginTime, endTime)
         return usageSt
     }
 
@@ -110,6 +116,7 @@ class QueryStatsFragment() : Fragment(), Parcelable {
             if (pck.totalTimeInForeground > timeUsed) {
                 timeUsed = pck.totalTimeInForeground
                 topPack = pck
+                top = pck
             }
         }
         if (topPack != null) {
