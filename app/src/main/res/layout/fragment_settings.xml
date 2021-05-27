@@ -11,7 +11,7 @@
     tools:context=".SettingsFragment">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/bottomNavigationViewSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
@@ -30,7 +30,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView" />
+        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationViewSettings" />
 
     <TextView
         android:id="@+id/option_top_package_text"

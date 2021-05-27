@@ -75,7 +75,7 @@
         app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/bottomNavigationViewHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
