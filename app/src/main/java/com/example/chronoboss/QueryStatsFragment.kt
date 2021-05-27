@@ -11,59 +11,48 @@ import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.pm.ApplicationInfo
-import android.os.Parcel
-import android.os.Parcelable
 import android.provider.Settings
 import android.widget.TextView
-import com.google.android.material.internal.ContextUtils
-import com.google.android.material.internal.ContextUtils.getActivity
-import java.security.AccessController.getContext
 import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//private const val ARG_PARAM1 = "param1"
-//private const val ARG_PARAM2 = "param2"
+/** fragment class that queries usage statistics for the user */
+class QueryStatsFragment() : Fragment() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [QueryStatsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class QueryStatsFragment() : Fragment(), Parcelable {
-    private var top: UsageStats? = null
-    private var topPckName: String? = null
-    private var topPckTime:Long? = null
-
-    constructor(parcel: Parcel) : this() {
-        top = parcel.readParcelable(UsageStats::class.java.classLoader)
-        topPckName = parcel.readString()
-    }
-    // TODO: Rename and change types of parameters
-    /*private var param1: String? = null
-    private var param2: String? = null
+    /** inflates the fragment for the activity
      */
-
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    } */
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //inflate view
         val view:View = inflater.inflate(R.layout.fragment_query_stats, container, false)
-        // Inflate the layout for this fragment
-
-        //requestUsageStatsPermission()
-        //var stats:List<UsageStats> = getStats(context)
+        //check if has stats access, if not request
         if(!hasPermission()){
-            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+            requestUsageStatsPermission()
         }
+        //find the top package
+        val top:UsageStats? = getTopPackage()
+        //find the textview for the top package name
+        val setTopView: TextView? = view.findViewById(R.id.top_package_name)
+        //set the text to the top package name
+        setTopView?.setText(top?.packageName)
+        //convert the time the top app was used to a string
+        val topTimeString:String? = top?.totalTimeInForeground.toString()
+        //find the textview for the top package time used
+        val timeV:TextView? = view.findViewById(R.id.top_package_time)
+        //set it to the time the app was used
+        timeV?.setText(topTimeString)
+        //return the view that was inflated
+        return view
+    }
+
+    /** function to open settings to allow access to usage stats from OS */
+    fun requestUsageStatsPermission() {
+        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+    }
+
+    /** function to query the usage statistics from the OS in given interval */
+    fun getStats(context: Context?): List<UsageStats> {
         val statsManager =
             context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
         val milliDay = 86400000
@@ -71,67 +60,33 @@ class QueryStatsFragment() : Fragment(), Parcelable {
         val endTime: Long = System.currentTimeMillis()
         val beginTime: Long = endTime - milliDay
         val usageSt: List<UsageStats> =
-            statsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, beginTime, endTime)
-        var timeUsed: Long = 0
-        var topPack: UsageStats? = null
-        for (pck in usageSt) {
-            if (pck.totalTimeInForeground > timeUsed && (pck.packageName != "com.google.android.apps.nexuslauncher")
-                && (pck.packageName != "com.example.chronoboss")) {
-                timeUsed = pck.totalTimeInForeground
-                topPack = pck
-            }
-        }
-        if (topPack != null) {
-            topPckName = topPack.packageName
-            topPckTime = topPack.totalTimeInForeground
-        }
-
-        val setTopView: TextView? = view.findViewById(R.id.top_package_name)
-        setTopView?.setText(topPckName)
-        val topTimeString:String? = topPckTime.toString()
-        val timeV:TextView? = view.findViewById(R.id.top_package_time)
-        timeV?.setText(topTimeString)
-        //return inflater.inflate(R.layout.fragment_query_stats, container, false)
-        return view
-    }
-
-    fun requestUsageStatsPermission() {
-        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
-    }
-
-
-    fun getStats(context: Context?): List<UsageStats> {
-        requestUsageStatsPermission()
-        val statsManager =
-            context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-        val milliDay = 3600000
-        val calendar: Calendar = Calendar.getInstance()
-        val endTime: Long = calendar.timeInMillis
-        val beginTime: Long = endTime - milliDay
-        val usageSt: List<UsageStats> =
             statsManager.queryUsageStats(UsageStatsManager.INTERVAL_BEST, beginTime, endTime)
         return usageSt
     }
 
-    fun getTopPackage(packageList: List<UsageStats>): String {
-        var timeUsed: Long = 0
-        var topPack: UsageStats? = null
-        for (pck in packageList) {
-            if (pck.totalTimeInForeground > timeUsed) {
+    /** function to get the top package name based on the list of packages gathered
+     * from the query
+     */
+    fun getTopPackage():UsageStats?{
+        val usageSt = getStats(context)
+        var timeUsed:Long = 0
+        var topPack:UsageStats? = null
+        for(pck in usageSt){
+            if((pck.totalTimeInForeground > timeUsed ) &&
+                (pck.packageName != "com.google.android.apps.nexuslauncher") &&
+                (pck.packageName != "com.example.chronoboss")){
                 timeUsed = pck.totalTimeInForeground
                 topPack = pck
-                top = pck
             }
-        }
-        if (topPack != null) {
-            return topPack.packageName
-        }
-        return "default package"
 
+        }
+        return topPack
     }
 
+    /** function to check whether our app has been granted access to query usage
+     * statistics from the operating system
+     */
     fun hasPermission():Boolean {
-
         val applicationInform: ApplicationInfo? =
             context?.packageName?.let { activity?.packageManager?.getApplicationInfo(it, 0) }
         val appOps: AppOpsManager =
@@ -145,60 +100,7 @@ class QueryStatsFragment() : Fragment(), Parcelable {
         }
         return (mode == AppOpsManager.MODE_ALLOWED)
     }
-
-
-
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeParcelable(top, flags)
-        parcel.writeString(topPckName)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<QueryStatsFragment> {
-        override fun createFromParcel(parcel: Parcel): QueryStatsFragment {
-            return QueryStatsFragment(parcel)
-        }
-
-        override fun newArray(size: Int): Array<QueryStatsFragment?> {
-            return arrayOfNulls(size)
-        }
-    }
 }
 
-/*fun setTopPackage(context:Context?){
-    val ls = getStats(context)
-    //dataField = getTopPackage()
 
 
-
-
-//UsageStatsManager mUsageStatsManager = (UsageStatsManager)getSystemService("usagestats");
-
-
-
-
-
-
-/*companion object {
-/**
- * Use this factory method to create a new instance of
- * this fragment using the provided parameters.
- *
- * @param param1 Parameter 1.
- * @param param2 Parameter 2.
- * @return A new instance of fragment QueryStatsFragment.
- */
-// TODO: Rename and change types and number of parameters
-@JvmStatic
-/*fun newInstance(param1: String, param2: String) =
-    QueryStatsFragment().apply {
-        arguments = Bundle().apply {
-            putString(ARG_PARAM1, param1)
-            putString(ARG_PARAM2, param2)
-        }
-    }
-} */
