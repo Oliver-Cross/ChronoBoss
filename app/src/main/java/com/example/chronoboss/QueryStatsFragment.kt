@@ -70,7 +70,7 @@ class QueryStatsFragment() : Fragment(), Parcelable {
         var timeUsed: Long = 0
         var topPack: UsageStats? = null
         for (pck in usageSt) {
-            if (pck.totalTimeInForeground > timeUsed) {
+            if (pck.totalTimeInForeground > timeUsed && (pck.packageName != "com.google.android.apps.nexuslauncher")) {
                 timeUsed = pck.totalTimeInForeground
                 topPack = pck
             }
