@@ -88,29 +88,3 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--
-push:
-    branches: [master]
-
- jobs:
-    dokka:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: grn\ant executive permission for gradlew
-              run: chmod +x gradlew
-            - name: regenerate documentation
-            run: |
-            rm -rf docs
-            ./gradlew dokkahtml
-            mv app/build.dokka/html ./docs
-            - name: Commit changes
-            run: |
-                git config --local user.email "email address here"
-                git config --local user.name "your name here"
-                git add -f docs
-                git diff-index --quiet HEAD || git commit -m "Auto update"
-                - name: push documentation
-                run: git push -u origin master
- -->
