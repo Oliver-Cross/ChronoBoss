@@ -12,6 +12,7 @@ import android.content.Context
 import android.os.Parcel
 import android.os.Parcelable
 import android.provider.Settings
+import android.widget.TextView
 import com.google.android.material.internal.ContextUtils
 import com.google.android.material.internal.ContextUtils.getActivity
 import java.security.AccessController.getContext
@@ -77,6 +78,9 @@ class QueryStatsFragment() : Fragment(), Parcelable {
         if (topPack != null) {
             topPckName = topPack.packageName
         }
+
+        val setTopView: TextView? = view.findViewById(R.id.top_package_name)
+        setTopView?.setText(topPckName)
         //return inflater.inflate(R.layout.fragment_query_stats, container, false)
         return view
     }
