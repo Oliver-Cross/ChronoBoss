@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: grn\ant executive permission for gradlew
+      - name: grant executive permission for gradlew
       run: chmod +x gradlew
       - name: regenerate documentation
       run: |
