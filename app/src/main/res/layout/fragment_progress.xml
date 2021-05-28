@@ -12,10 +12,44 @@
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/nav_bar_menu" />
+
+    <TextView
+        android:id="@+id/const_mins_banked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="minutes banked!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/prog_mins_banked"
+        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView" />
+
+    <TextView
+        android:id="@+id/prog_mins_banked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="place_holder"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/const_mins_banked"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/const_mins_banked" />
+
+    <ImageView
+        android:id="@+id/progress_badge_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/chronoboss_no_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/const_mins_banked" />
 </androidx.constraintlayout.widget.ConstraintLayout>
