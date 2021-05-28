@@ -98,6 +98,13 @@ class QueryStatsFragment() : Fragment() {
         }
         return (mode == AppOpsManager.MODE_ALLOWED)
     }
+
+
+    /* refresh
+    1. create button to press
+    2. what happens when it gets clicked
+    it should pull the stats data then display it
+     */
 }
 
 

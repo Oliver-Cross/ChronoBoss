@@ -15,4 +15,9 @@ class QueryStatsActivity : AppCompatActivity() {
         val intent: Intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
+
+    fun refreshPage(view:View){
+        val intent:Intent = intent
+        startActivity(intent)
+    }
 }
