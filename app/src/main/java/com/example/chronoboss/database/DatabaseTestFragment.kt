@@ -53,7 +53,7 @@ class DatabaseTestFragment : Fragment() {
 
         if(inputCheck(application, timeWasted, timeLimit)){
             //Create day object
-            val day = Day(0, )
+            val day = Day(0, 20, 40)
         }
     }
 
