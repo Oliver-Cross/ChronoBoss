@@ -11,7 +11,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.Image
+import android.text.TextUtils.replace
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.internal.NavigationMenu
+import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
@@ -25,6 +31,18 @@ class HomeFragment : Fragment() {
         val icon: ImageView = view.findViewById(R.id.app_icon)
         val chrome: Drawable? = activity?.packageManager?.getApplicationIcon("com.android.chrome")
         icon.setImageDrawable(chrome)
+
+        val progressFragment = ProgressFragment()
+
+        /*
+        bottomNavigationViewHome.setOnNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.progressFragment -> setCurrentFragment(progressFragment)
+            }
+            true
+        }
+        */
+
         return view
     }
 

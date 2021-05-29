@@ -74,16 +74,6 @@
         app:layout_constraintTop_toTopOf="@+id/progressBar"
         app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationViewHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/nav_bar_menu" />
-
     <TextView
         android:id="@+id/top_package_name"
         android:layout_width="wrap_content"
