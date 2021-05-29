@@ -8,5 +8,4 @@
     android:background="#FDC6BC"
     tools:context=".StatsFragment">
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

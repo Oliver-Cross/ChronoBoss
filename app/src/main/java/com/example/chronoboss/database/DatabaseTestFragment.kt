@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.R
@@ -48,14 +47,20 @@ class DatabaseTestFragment : Fragment() {
     }
 
     private fun insertDataToDatabase() {
-        val dayId = addDayId_et.text
-        val timeWasted = addTimeWasted_et.text
-        val timeLimit = addTimeLimit_et.text
-        val application = addApplication_et.text.toString()
+        val dayId_text = addDayId_et.text
+        val timeWasted_text = addTimeWasted_et.text
+        val timeLimit_text = addTimeLimit_et.text
+        val application_text = addApplication_et.text
 
-        if(inputCheck(dayId, timeWasted, timeLimit, application)){
+        if(inputCheck(dayId_text, timeWasted_text, timeLimit_text, application_text)){
+
+            val dayId: Int = addDayId_et.toString().toInt()
+            val timeWasted: Int = addTimeWasted_et.toString().toInt()
+            val timeLimit: Int = addTimeLimit_et.toString().toInt()
+            val application: String = addApplication_et.text.toString()
+
             //Create day object
-            val day = Day(0, 20, 40, "Chrome")
+            val day = Day(dayId, timeWasted, timeLimit, application)
             // Add data to database
             mDayViewModel.addDay(day)
             Toast.makeText(requireContext(), "Successfuly added!", Toast.LENGTH_LONG).show()
@@ -64,8 +69,8 @@ class DatabaseTestFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(dayId: Editable, timeWasted: Editable, timeLimit: Editable, application: String): Boolean{
-        return !(TextUtils.isEmpty(application) && timeWasted.isEmpty() && timeLimit.isEmpty() && dayId.isEmpty())
+    private fun inputCheck(dayId: Editable, timeWasted: Editable, timeLimit: Editable, application: Editable): Boolean{
+        return !(application.isEmpty() && timeWasted.isEmpty() && timeLimit.isEmpty() && dayId.isEmpty())
     }
 
 
