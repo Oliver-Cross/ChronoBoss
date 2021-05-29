@@ -35,7 +35,7 @@ jobs:
           rm -rf docs
           ./gradlew dokkahtml
           mv app/build/dokka/html ./docs
-      - name: Commit changes
+      name: Commit changes
         run: |
           git config user.email "crool215@student.otago.ac.nz"
           git config user.name "Oliver Cross"
