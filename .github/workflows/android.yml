@@ -37,7 +37,9 @@ jobs:
           mv app/build/dokka/html ./docs
       - name: Commit changes
         run: |
+          git config --global user.email "crool215@student.otago.ac.nz"
+          git config --global user.name "Oliver Cross"
           git add -f docs
           git diff-index --quiet HEAD || git commit -m "Auto update"
-          - name: push documentation
-            run: git push -u origin master
+      - name: push documentation
+        run: git push -u origin master
