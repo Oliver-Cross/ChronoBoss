@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:text="DayId" />
+            android:hint="DayId" />
 
         <EditText
             android:id="@+id/addTimeWasted_et"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:text="TimeWasted" />
+            android:hint="TimeWasted" />
 
         <EditText
             android:id="@+id/addTimeLimit_et"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:text="TimeLimit" />
+            android:hint="TimeLimit" />
 
         <EditText
             android:id="@+id/addApplication_et"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Application" />
+            android:hint="Application" />
 
         <Button
             android:id="@+id/add_btn"

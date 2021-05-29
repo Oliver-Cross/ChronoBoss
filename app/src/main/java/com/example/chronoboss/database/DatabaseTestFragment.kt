@@ -54,9 +54,9 @@ class DatabaseTestFragment : Fragment() {
 
         if(inputCheck(dayId_text, timeWasted_text, timeLimit_text, application_text)){
 
-            val dayId: Int = addDayId_et.toString().toInt()
-            val timeWasted: Int = addTimeWasted_et.toString().toInt()
-            val timeLimit: Int = addTimeLimit_et.toString().toInt()
+            val dayId: Int = addDayId_et.text.toString().toInt()
+            val timeWasted: Int = addTimeWasted_et.text.toString().toInt()
+            val timeLimit: Int = addTimeLimit_et.text.toString().toInt()
             val application: String = addApplication_et.text.toString()
 
             //Create day object
