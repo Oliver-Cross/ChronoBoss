@@ -29,9 +29,12 @@ class ProgressFragment : Fragment() {
 
         mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
 
+        /*
         mDayViewModel.readAllData.observe(viewLifecycleOwner, Observer{ day ->
             adapter.setData(day)
         })
+
+         */
 
 
     }
