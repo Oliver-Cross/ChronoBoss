@@ -4,20 +4,12 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
-import com.example.chronoboss.database.TimeDatabase
-import com.example.chronoboss.database.TimeDatabaseDao
-import com.example.chronoboss.database.TimeTracking
 import junit.framework.Assert.assertEquals
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.io.IOException
-import java.sql.Time
 
 @RunWith(AndroidJUnit4::class)
 class TimeDatabaseTest {
