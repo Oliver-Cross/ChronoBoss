@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class DayViewModel(application: Application): AndroidViewModel(application) {
 
-    private val readAllData: LiveData<List<Day>>
+    val readAllData: LiveData<List<Day>>
     private val repository: DayRepository
 
     //First executed when day view model is called
@@ -24,10 +24,6 @@ class DayViewModel(application: Application): AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addDay(day)
         }
-    }
-
-    fun readAllData(): LiveData<List<Day>> {
-        return readAllData
     }
 
 

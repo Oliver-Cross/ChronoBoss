@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
 
         mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
         insertNewDay(100, 11, 70, "Play Store")
-        val readAllData = readAllData()
+        val readAllData = mDayViewModel.readAllData
 
         return view
     }
@@ -51,9 +51,6 @@ class HomeFragment : Fragment() {
         mDayViewModel.addDay(day)
     }
 
-    fun readAllData(): LiveData<List<Day>> {
-        return mDayViewModel.readAllData()
-    }
 
 
     /*fun getIcon(): Drawable? {
