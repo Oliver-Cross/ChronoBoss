@@ -39,7 +39,14 @@ class HomeFragment : Fragment() {
         icon.setImageDrawable(chrome)
 
         mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
+
+
+
+
+
         insertNewDay(100, 11, 70, "Play Store")
+
+
         val readAllData = mDayViewModel.readAllData
 
         return view
