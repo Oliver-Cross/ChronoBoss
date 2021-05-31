@@ -26,5 +26,9 @@ class DayViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun readAllData(): LiveData<List<Day>> {
+        return readAllData
+    }
+
 
 }

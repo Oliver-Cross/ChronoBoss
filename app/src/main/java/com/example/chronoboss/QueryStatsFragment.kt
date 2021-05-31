@@ -64,6 +64,8 @@ class QueryStatsFragment() : Fragment() {
 
     /** function to get the top package name based on the list of packages gathered
      * from the query
+     * @return returns the top package - the one being used the most
+     *
      */
     fun getTopPackage():UsageStats?{
         val usageSt = getStats(context)

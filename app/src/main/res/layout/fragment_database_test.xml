@@ -17,24 +17,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="DayId" />
+            android:inputType="number"
+            android:hint="DayId" />
 
         <EditText
             android:id="@+id/addTimeWasted_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="TimeWasted" />
+            android:inputType="number"
+            android:hint="TimeWasted" />
 
         <EditText
             android:id="@+id/addTimeLimit_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="TimeLimit" />
+            android:inputType="number"
+            android:hint="TimeLimit" />
 
         <EditText
             android:id="@+id/addApplication_et"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Application" />
+            android:hint="Application" />
 
         <Button
             android:id="@+id/add_btn"
