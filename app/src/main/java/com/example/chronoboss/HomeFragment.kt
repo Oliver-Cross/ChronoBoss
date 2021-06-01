@@ -19,6 +19,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.chronoboss.database.Day
 import com.example.chronoboss.database.DayViewModel
+import com.example.chronoboss.databinding.FragmentHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.internal.NavigationMenu
 import com.google.android.material.navigation.NavigationView
@@ -28,6 +29,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment() {
 
     private lateinit var mDayViewModel: DayViewModel
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
 
@@ -36,17 +38,21 @@ class HomeFragment : Fragment() {
     ): View? {
 
 
-        /*
-        val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
+
+        binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
             R.layout.fragment_home,container,false)
-        return binding.root */
 
 
-
-        val view: View = inflater.inflate(R.layout.fragment_home, container, false)
-        val icon: ImageView = view.findViewById(R.id.app_icon)
+        val icon: ImageView = binding.appIcon
         val chrome: Drawable? = activity?.packageManager?.getApplicationIcon("com.android.chrome")
         icon.setImageDrawable(chrome)
+
+
+
+        // val view: View = inflater.inflate(R.layout.fragment_home, container, false)
+        // val icon: ImageView = view.findViewById(R.id.app_icon)
+        // val chrome: Drawable? = activity?.packageManager?.getApplicationIcon("com.android.chrome")
+        // icon.setImageDrawable(chrome)
 
         mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
 
@@ -59,7 +65,8 @@ class HomeFragment : Fragment() {
 
         val readAllData = mDayViewModel.readAllData
 
-        return view
+        //return view
+        return binding.root
     }
 
     fun insertNewDay(dayId: Int, timeWasted: Int, timeLimit: Int, application: String){
