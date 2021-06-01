@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDC6BC"
+    android:background="#8F95D3"
     tools:context=".ProgressFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,23 +14,23 @@
         android:id="@+id/const_mins_banked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
         android:text="minutes banked!"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/prog_mins_banked"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/prog_mins_banked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="50dp"
         android:text="place_holder"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/const_mins_banked"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/const_mins_banked" />
 
     <ImageView
