@@ -1,5 +1,6 @@
 package com.example.chronoboss
 
+import android.app.usage.UsageStats
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -35,8 +36,15 @@ class HomeFragment : Fragment() {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         val icon: ImageView = view.findViewById(R.id.app_icon)
-        val chrome: Drawable? = activity?.packageManager?.getApplicationIcon("com.android.chrome")
-        icon.setImageDrawable(chrome)
+        val queryStatsUtils:QueryStatsUtils = QueryStatsUtils()
+        val topPck:UsageStats? = queryStatsUtils.getTopPackage(context)
+        val topPckNme:String? = topPck?.packageName
+        val topPackageIcon: Drawable? = topPckNme?.let {
+            activity?.packageManager?.getApplicationIcon(
+                it
+            )
+        }
+        icon.setImageDrawable(topPackageIcon)
 
         mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
         insertNewDay(100, 11, 70, "Play Store")
