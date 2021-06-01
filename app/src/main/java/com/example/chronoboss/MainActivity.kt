@@ -6,15 +6,20 @@ import android.content.Intent
 //import android.content.pm.PackageManager
 //import android.graphics.drawable.Drawable
 import android.view.View
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayout
 
 //import android.widget.ImageView
 
 
 class MainActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,8 +28,45 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_controller) as NavHostFragment
         val navController = navHostFragment.navController
 
-        val navigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
-        navigationView.setupWithNavController(navController)
+        val tablayout: TabLayout = findViewById(R.id.tab_layout_navigation)
+        val viewpager: ViewPager2 = findViewById(R.id.view_pager_nav)
+
+
+        val fm: FragmentManager = supportFragmentManager
+        val fragmentadapter: FragmentAdapter = FragmentAdapter(fm, lifecycle)
+        viewpager.adapter = fragmentadapter
+
+        tablayout.addTab(tablayout.newTab().setText("Home"))
+        tablayout.addTab(tablayout.newTab().setText("Stats"))
+        tablayout.addTab(tablayout.newTab().setText("Progress"))
+        tablayout.addTab(tablayout.newTab().setText("Settings"))
+        tablayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+                if (tab != null) {
+                    viewpager.setCurrentItem(tab.position)
+                }
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+        viewpager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                tablayout.selectTab(tablayout.getTabAt(position))
+                // super.onPageSelected(position)
+            }
+        })
+
+        // val navigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        // navigationView.setupWithNavController(navController)
 
     }
 
