@@ -25,37 +25,31 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Initialize navigation bar
+        /*
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_controller) as NavHostFragment
         val navController = navHostFragment.navController
-
+        */
         val tablayout: TabLayout = findViewById(R.id.tab_layout_navigation)
         val viewpager: ViewPager2 = findViewById(R.id.view_pager_nav)
-
-
         val fm: FragmentManager = supportFragmentManager
         val fragmentadapter: FragmentAdapter = FragmentAdapter(fm, lifecycle)
         viewpager.adapter = fragmentadapter
-
         tablayout.addTab(tablayout.newTab().setText("Home"))
         tablayout.addTab(tablayout.newTab().setText("Stats"))
         tablayout.addTab(tablayout.newTab().setText("Progress"))
         tablayout.addTab(tablayout.newTab().setText("Settings"))
         tablayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
                 if (tab != null) {
                     viewpager.setCurrentItem(tab.position)
                 }
             }
-
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
-            }
 
+            }
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
-            }
 
+            }
         })
 
         viewpager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
