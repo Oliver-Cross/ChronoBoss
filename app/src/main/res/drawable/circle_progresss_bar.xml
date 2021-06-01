@@ -6,7 +6,7 @@
             android:shape="ring"
             android:thicknessRatio="16"
             android:useLevel="false">
-            <solid android:color="#DDDEEE"/>
+            <solid android:color="#D2D0BA"/>
         </shape>
     </item>
 <!-- foreground circle, denotes progress -->
@@ -18,8 +18,8 @@
                 android:shape="ring"
                 android:thicknessRatio="16"
                 android:useLevel="true">
-                <gradient android:startColor="#0000FF"
-                    android:endColor="#00FF00"
+                <gradient android:endColor="#545C52"
+                    android:startColor="#004F2D"
                     />
 
             </shape>
