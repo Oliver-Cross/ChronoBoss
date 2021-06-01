@@ -18,6 +18,8 @@ import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.SeekBar.*
 import android.widget.TextView
+import android.widget.TextView.*
+
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.activity_test.*
 
@@ -31,7 +33,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SettingsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SettingsFragment : Fragment(), OnSeekBarChangeListener {
+class SettingsFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -91,11 +93,28 @@ class SettingsFragment : Fragment(), OnSeekBarChangeListener {
         }
         v.setImageDrawable(topPackageIcon)
 
-        val seekBar:SeekBar = view.findViewById(R.id.option_app_budget_slider)
-        seekBar.setProgress(50)
-        var textView:TextView = view.findViewById(R.id.app_budget_slider_value)
-        textView.setText("hello")
-        seekBar.setOnSeekBarChangeListener(this)
+          val seekBar:SeekBar
+
+         seekBar = view.findViewById(R.id.option_app_budget_slider)
+
+        seekBar.max = 50
+
+         var textView:TextView
+        textView = view.findViewById(R.id.app_budget_slider_value)
+
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+            textView.text = progress.toString()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
+
+
 
 
 
@@ -125,13 +144,4 @@ class SettingsFragment : Fragment(), OnSeekBarChangeListener {
             }
     }
 
-    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-        textView.setText(progress)
-    }
-
-    override fun onStartTrackingTouch(seekBar: SeekBar?) {
-    }
-
-    override fun onStopTrackingTouch(seekBar: SeekBar?) {
-    }
 }
