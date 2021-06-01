@@ -8,14 +8,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.provider.Settings
+import androidx.fragment.app.FragmentActivity
 
 
-    class QueryStatsUtils {
+class QueryStatsUtils {
 
-        fun requestUsageStatsPermission(activity: Activity) {
-            val intent: Intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
-            activity.startActivity(intent)
-        }
 
         fun hasStatsPermission(context: Context, activity: Activity): Boolean {
 
@@ -32,6 +29,12 @@ import android.provider.Settings
             }
             return (mode == AppOpsManager.MODE_ALLOWED)
         }
+
+    fun requestUsageStatsPermission(activity: Activity) {
+        val intent: Intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
+        activity.startActivity(intent)
+    }
+
 
         fun getStats(context: Context?): List<UsageStats> {
             val statsManager =
@@ -57,6 +60,11 @@ import android.provider.Settings
                 }
             }
             return topPackage
+        }
+
+        fun getTopPackage(): UsageStats? {
+            return getTopPackage()
+
         }
     }
 

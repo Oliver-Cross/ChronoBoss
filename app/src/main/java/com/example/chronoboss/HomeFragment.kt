@@ -13,6 +13,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.Image
 import android.text.TextUtils.replace
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -44,6 +45,7 @@ class HomeFragment : Fragment() {
                 it
             )
         }
+
         icon.setImageDrawable(topPackageIcon)
 
         mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)

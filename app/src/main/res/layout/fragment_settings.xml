@@ -61,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#03A9F4"
+        android:onClick="clickButton"
         android:text="Get App Info"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/option_top_package_text"
@@ -90,5 +91,33 @@
         app:layout_constraintEnd_toEndOf="@+id/option_app_budget_slider"
         app:layout_constraintStart_toStartOf="@+id/option_app_budget_slider"
         app:layout_constraintTop_toBottomOf="@+id/option_app_budget_slider" />
+
+    <TextView
+        android:id="@+id/currently_tracking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currently Tracking"
+        android:textColor="#0C0808"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.415"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/option_budget_slider_text"
+        app:layout_constraintVertical_bias="0.306" />
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:layout_width="98dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="38dp"
+        android:src="@android:mipmap/sym_def_app_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currently_tracking"
+        app:layout_constraintVertical_bias="0.024" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
