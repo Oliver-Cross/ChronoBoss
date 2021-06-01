@@ -12,6 +12,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.Image
 import android.text.TextUtils.replace
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -33,6 +34,15 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
+        /*
+        val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
+            R.layout.fragment_home,container,false)
+        return binding.root */
+
+
+
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         val icon: ImageView = view.findViewById(R.id.app_icon)
         val chrome: Drawable? = activity?.packageManager?.getApplicationIcon("com.android.chrome")
