@@ -19,6 +19,7 @@ import android.widget.SeekBar
 import android.widget.SeekBar.*
 import android.widget.TextView
 import android.widget.TextView.*
+import android.widget.Toast
 
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.activity_test.*
@@ -98,23 +99,19 @@ class SettingsFragment : Fragment() {
          seekBar = view.findViewById(R.id.option_app_budget_slider)
 
         seekBar.max = 50
-
+        
          var textView:TextView
         textView = view.findViewById(R.id.app_budget_slider_value)
 
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-            textView.text = progress.toString()
+                textView.text = ("min " + progress.toString())
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
             }
-
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
             }
         })
-
-
 
 
 
