@@ -1,5 +1,6 @@
 package com.example.chronoboss.database
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,5 +11,5 @@ data class Day (
     val dayId: Int,
     val timeWasted: Int,
     val timeLimit: Int,
-    val application: String
+    val application: String,
         )

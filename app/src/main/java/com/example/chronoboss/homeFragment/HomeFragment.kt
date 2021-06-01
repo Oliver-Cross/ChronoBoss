@@ -1,4 +1,4 @@
-package com.example.chronoboss
+package com.example.chronoboss.homeFragment
 
 import android.app.usage.UsageStats
 import android.graphics.drawable.Drawable
@@ -8,23 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.media.Image
-import android.text.TextUtils.replace
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
+import com.example.chronoboss.QueryStatsUtils
+import com.example.chronoboss.R
 import com.example.chronoboss.database.Day
+import com.example.chronoboss.database.DayDatabase
 import com.example.chronoboss.database.DayViewModel
 import com.example.chronoboss.databinding.FragmentHomeBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.internal.NavigationMenu
-import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
@@ -47,7 +39,7 @@ class HomeFragment : Fragment() {
 
         //val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         //val icon: ImageView = view.findViewById(R.id.app_icon)
-        val queryStatsUtils:QueryStatsUtils = QueryStatsUtils()
+        val queryStatsUtils: QueryStatsUtils = QueryStatsUtils()
         val topPck:UsageStats? = queryStatsUtils.getTopPackage(context)
         val topPckNme:String? = topPck?.packageName
         val topPackageIcon: Drawable? = topPckNme?.let {
@@ -57,9 +49,28 @@ class HomeFragment : Fragment() {
         }
         icon.setImageDrawable(topPackageIcon)
 
-        mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
-        insertNewDay(100, 11, 70, "Play Store")
-        val readAllData = readAllData()
+
+
+
+
+        // Room database setup
+        val application = requireNotNull(this.activity).application
+        val dataSource = DayDatabase.getDatabase(application).dayDao()
+        val viewModelFactory = HomeViewModelFactory(dataSource, application)
+        val homeViewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+
+
+
+
+        //mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
+        //val readAllData = readAllData()
+
+        binding.homeViewModel = homeViewModel
+
+
+
+        binding.setLifecycleOwner(this)
+
 
         return binding.root
     }

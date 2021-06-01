@@ -17,5 +17,9 @@ interface DayDao {
     @Query("SELECT * FROM day_table ORDER BY dayId DESC")
     fun readAllData(): LiveData<List<Day>>
 
+    /*
+    @Query("SELECT * FROM day_table ORDER BY dayId DESC LIMIT 1")
+    suspend fun getToday(): Day?
+    */
 
 }
