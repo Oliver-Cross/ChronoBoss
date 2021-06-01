@@ -52,6 +52,12 @@ $dokka.location:com.example.chronoboss/QueryStatsFragment/getTopPackage/#/Pointi
 $dokka.location:com.example.chronoboss/QueryStatsFragment/hasPermission/#/PointingToDeclaration/app/com.example.chronoboss/-query-stats-fragment/has-permission.html
 $dokka.location:com.example.chronoboss/QueryStatsFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.chronoboss/-query-stats-fragment/on-create-view.html
 $dokka.location:com.example.chronoboss/QueryStatsFragment/requestUsageStatsPermission/#/PointingToDeclaration/app/com.example.chronoboss/-query-stats-fragment/request-usage-stats-permission.html
+$dokka.location:com.example.chronoboss/QueryStatsUtils///PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/index.html
+$dokka.location:com.example.chronoboss/QueryStatsUtils/QueryStatsUtils/#/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/-query-stats-utils.html
+$dokka.location:com.example.chronoboss/QueryStatsUtils/getStats/#android.content.Context?/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/get-stats.html
+$dokka.location:com.example.chronoboss/QueryStatsUtils/getTopPackage/#android.content.Context?/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/get-top-package.html
+$dokka.location:com.example.chronoboss/QueryStatsUtils/hasStatsPermission/#android.content.Context#android.app.Activity/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/has-stats-permission.html
+$dokka.location:com.example.chronoboss/QueryStatsUtils/requestUsageStatsPermission/#android.app.Activity/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/request-usage-stats-permission.html
 $dokka.location:com.example.chronoboss/SettingsFragment.Companion///PointingToDeclaration/app/com.example.chronoboss/-settings-fragment/-companion/index.html
 $dokka.location:com.example.chronoboss/SettingsFragment.Companion/newInstance/#kotlin.String#kotlin.String/PointingToDeclaration/app/com.example.chronoboss/-settings-fragment/-companion/new-instance.html
 $dokka.location:com.example.chronoboss/SettingsFragment///PointingToDeclaration/app/com.example.chronoboss/-settings-fragment/index.html
