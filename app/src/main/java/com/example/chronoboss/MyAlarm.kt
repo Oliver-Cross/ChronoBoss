@@ -13,7 +13,7 @@ class MyAlarm : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         val testName:String = "com.android.settings"
-        val lim:Long? = 12217
+        val lim:Long = 12217
         val usage: UsageStatsManager = context?.getSystemService(
             Context.USAGE_STATS_SERVICE
         ) as UsageStatsManager
@@ -31,8 +31,9 @@ class MyAlarm : BroadcastReceiver() {
                 if(usageStats.packageName == testName){
                     var currentTmeMill:Long? = usageStats.totalTimeInForeground
                     if(currentTmeMill != null){
-                        if(currentTmeMill >= lim!!){
-                            Toast.makeText(context, "limit has been reached",  Toast.LENGTH_SHORT).show()
+                        if(currentTmeMill >= lim){
+                            abortBroadcast
+                            Toast.makeText(context, "limit has been reached",  Toast.LENGTH_LONG).show()
                         }
                     }
                 }
