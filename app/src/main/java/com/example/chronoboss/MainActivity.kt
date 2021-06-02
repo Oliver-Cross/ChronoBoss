@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(tablayout, viewpager,
             object : TabLayoutMediator.TabConfigurationStrategy {
                 override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
+                    tab.setText(tab.id)
                 }
             }).attach()
-
 
 
 
