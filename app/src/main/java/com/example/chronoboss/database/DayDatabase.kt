@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Day::class], version = 1, exportSchema = false)
+@Database(entities = [Day::class], version = 2, exportSchema = false)
 abstract class DayDatabase: RoomDatabase() {
 
     abstract fun dayDao(): DayDao
@@ -27,7 +27,7 @@ abstract class DayDatabase: RoomDatabase() {
                     context.applicationContext,
                     DayDatabase::class.java,
                     "day_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
             }
