@@ -35,18 +35,20 @@ class MainActivity : AppCompatActivity() {
         val fm: FragmentManager = supportFragmentManager
         val fragmentadapter: FragmentAdapter = FragmentAdapter(fm, lifecycle)
         viewpager.adapter = fragmentadapter
-        tablayout.addTab(tablayout.newTab().setText("Home"))
-        tablayout.addTab(tablayout.newTab().setText("Stats"))
-        tablayout.addTab(tablayout.newTab().setText("Progress"))
-        tablayout.addTab(tablayout.newTab().setText("Settings"))
+
 
         TabLayoutMediator(tablayout, viewpager,
             object : TabLayoutMediator.TabConfigurationStrategy {
                 override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
+                    tab.setText("Home " + position+1)
                 }
             }).attach()
-
-
+/*
+        tablayout.addTab(tablayout.newTab().setText("Home"))
+        tablayout.addTab(tablayout.newTab().setText("Stats"))
+        tablayout.addTab(tablayout.newTab().setText("Progress"))
+        tablayout.addTab(tablayout.newTab().setText("Settings"))
+*/
 
 
         tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
