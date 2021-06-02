@@ -66,6 +66,8 @@ class HomeFragment : Fragment() {
         //val readAllData = readAllData()
 
         binding.homeViewModel = homeViewModel
+
+        //Insertion example
         val day = Day(101, 80, 200, "chromer2")
         homeViewModel.addDay(day)
 
