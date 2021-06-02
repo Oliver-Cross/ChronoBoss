@@ -35,7 +35,7 @@ class StatsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentStatsBinding>(inflater,
             R.layout.fragment_stats,container,false)
-
+        setLineChartData()
         return binding.root
     }
 
