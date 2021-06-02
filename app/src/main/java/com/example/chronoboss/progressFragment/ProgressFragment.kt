@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.R
+import com.example.chronoboss.database.Day
 import com.example.chronoboss.database.DayDatabase
 import com.example.chronoboss.databinding.FragmentHomeBinding
 import com.example.chronoboss.databinding.FragmentProgressBinding
@@ -36,10 +37,16 @@ class ProgressFragment : Fragment() {
         // Room database setup
         val application = requireNotNull(this.activity).application
         val dataSource = DayDatabase.getDatabase(application).dayDao()
-        val viewModelFactory = HomeViewModelFactory(dataSource, application)
-        val homeViewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+        val viewModelFactory = ProgressViewModelFactory(dataSource, application)
+        val progressViewModel = ViewModelProvider(this, viewModelFactory).get(ProgressViewModel::class.java)
 
 
+
+        binding.progressViewModel = progressViewModel
+
+
+        
+        binding.setLifecycleOwner(this)
 
 
         return binding.root

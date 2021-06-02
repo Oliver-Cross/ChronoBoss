@@ -23,7 +23,7 @@ class HomeViewModel (
 
 
 
-    val todayUsageString = Transformations.map(todayData) {it.timeWasted.toString()}
+    val todayUsageString = Transformations.map(todayData) {(it.timeLimit - it.timeWasted).toString()}
     val todayLimitString = Transformations.map(todayData) {it.timeLimit.toString()}
 
 

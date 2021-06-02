@@ -2,6 +2,7 @@ package com.example.chronoboss.progressFragment
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.Transformations
 import com.example.chronoboss.database.DayDao
 
 class ProgressViewModel (
@@ -11,7 +12,10 @@ class ProgressViewModel (
 
 
     private val allDays = database.readAllData()
-    val timeSaved = database.getTotalTimeSaved().toString()
+    val timeSavedLive = database.getTotalTimeSaved()
+    val timeSaved = Transformations.map(timeSavedLive) {
+        it.toString()
+    }
 
 
 }
