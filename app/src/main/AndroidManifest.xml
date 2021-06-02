@@ -35,7 +35,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".QueryStatsActivity"></activity>
-        <receiver  android:process=":remote" android:name=".MyAlarm"></receiver>
+        <receiver android:name=".MyAlarm" android:enabled="true"/>
+
     </application>
 
 </manifest>
