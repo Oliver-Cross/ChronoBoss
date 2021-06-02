@@ -18,4 +18,11 @@ interface DayDao {
     fun readAllData(): LiveData<List<Day>>
 
 
+    @Query("SELECT * FROM day_table ORDER BY dayId DESC LIMIT 1")
+    fun getToday(): LiveData<Day>
+
+    @Query("SELECT SUM(timeLimit - timeWasted) from day_table as time_saved")
+    fun getTotalTimeSaved(): LiveData<Int>
+
+
 }
