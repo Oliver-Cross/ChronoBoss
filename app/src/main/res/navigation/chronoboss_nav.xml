@@ -16,12 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.chronoboss.SettingsFragment"
+        android:name="com.example.chronoboss.settingsFragment.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/statsFragment"
-        android:name="com.example.chronoboss.StatsFragment"
+        android:name="com.example.chronoboss.statsFragment.StatsFragment"
         android:label="fragment_stats"
         tools:layout="@layout/fragment_stats" />
     <fragment
