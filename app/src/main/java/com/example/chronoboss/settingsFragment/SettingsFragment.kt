@@ -1,4 +1,4 @@
-package com.example.chronoboss
+package com.example.chronoboss.settingsFragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import com.example.chronoboss.R
+import com.example.chronoboss.database.DayDatabase
 import com.example.chronoboss.databinding.FragmentProgressBinding
 import com.example.chronoboss.databinding.FragmentSettingsBinding
+import com.example.chronoboss.statsFragment.StatsViewModel
+import com.example.chronoboss.statsFragment.StatsViewModelFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,6 +36,21 @@ class SettingsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentSettingsBinding>(inflater,
             R.layout.fragment_settings,container,false)
+
+        // Room database setup
+        val application = requireNotNull(this.activity).application
+        val dataSource = DayDatabase.getDatabase(application).dayDao()
+        val viewModelFactory = SettingsViewModelFactory(dataSource, application)
+        val settingsViewModel = ViewModelProvider(this, viewModelFactory).get(SettingsViewModel::class.java)
+
+
+
+        binding.settingsViewModel = settingsViewModel
+
+
+
+        binding.setLifecycleOwner(this)
+
 
         return binding.root
     }
