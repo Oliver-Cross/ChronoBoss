@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 //import android.widget.ImageView
 
@@ -38,26 +39,41 @@ class MainActivity : AppCompatActivity() {
         tablayout.addTab(tablayout.newTab().setText("Stats"))
         tablayout.addTab(tablayout.newTab().setText("Progress"))
         tablayout.addTab(tablayout.newTab().setText("Settings"))
-        tablayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+
+        TabLayoutMediator(tablayout, viewpager,
+            object : TabLayoutMediator.TabConfigurationStrategy {
+                override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
+                }
+            }).attach()
+
+
+
+
+
+        tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab != null) {
                     viewpager.setCurrentItem(tab.position)
                 }
             }
+
             override fun onTabReselected(tab: TabLayout.Tab?) {
 
             }
+
             override fun onTabUnselected(tab: TabLayout.Tab?) {
 
             }
         })
 
-        viewpager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
+        viewpager.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
                 tablayout.selectTab(tablayout.getTabAt(position))
-                // super.onPageSelected(position)
             }
         })
+
 
         // val navigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         // navigationView.setupWithNavController(navController)
@@ -73,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         view.setImageDrawable(getIcon())
     } */
 
-    fun goQueryStats(view:View) {
+    fun goQueryStats(view: View) {
         val intent = Intent(this, QueryStatsActivity::class.java)
         startActivity(intent)
     }

@@ -34,20 +34,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nav_host_controller"
+        app:layout_constraintTop_toBottomOf="@+id/view_pager_nav"
         app:layout_constraintVertical_bias="1.0" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_controller"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tab_layout_navigation"
-        app:navGraph="@navigation/chronoboss_nav" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
