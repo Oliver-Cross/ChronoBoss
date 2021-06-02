@@ -34,5 +34,20 @@ class StatsFragment : Fragment() {
 
         return binding.root
     }
+
+    fun setLineChartData(){
+
+        val xvalues = ArrayList<String>()
+        xvalues.add("Monday")
+        xvalues.add("Tuesday")
+        xvalues.add("Wednesday")
+        xvalues.add("Thursday")
+        xvalues.add("Friday")
+        xvalues.add("Saturday")
+        xvalues.add("Sunday")
+
+
+
+    }
     
 }
