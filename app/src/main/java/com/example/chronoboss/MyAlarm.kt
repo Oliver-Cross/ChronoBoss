@@ -1,14 +1,12 @@
 package com.example.chronoboss
 
 
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
@@ -23,9 +21,16 @@ class MyAlarm : BroadcastReceiver() {
     private val CHANNEL_ID = "channel_id_example_01"
     private val notificationID = 101
 
+    /**AlarmManager aManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+    Intent intent = new Intent(getBaseContext(), YourScheduleClass.class);
+    PendingIntent pIntent = PendingIntent.getBroadcast(context, 0, intent,              PendingIntent.FLAG_UPDATE_CURRENT);
+    aManager.cancel(pIntent); */
+
+
+
     override fun onReceive(context: Context?, intent: Intent?) {
-        val testName: String = "com.android.chrome"
-        val lim: Long = 122170
+        val testName: String = "com.android.settings"
+        val lim: Long = 70000
         val usage: UsageStatsManager = context?.getSystemService(
             Context.USAGE_STATS_SERVICE
         ) as UsageStatsManager
@@ -44,11 +49,20 @@ class MyAlarm : BroadcastReceiver() {
                     var currentTmeMill: Long? = usageStats.totalTimeInForeground
                     if (currentTmeMill != null) {
                         if (currentTmeMill >= lim) {
+                            Toast.makeText(context, "limit reached", Toast.LENGTH_SHORT).show()
+                            val aManager:AlarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
+                            val intent:Intent = Intent(context, MyAlarm::class.java)
+                            val pendingIntent:PendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                            aManager.cancel(pendingIntent)
+
                             //abortBroadcast
-                            Toast.makeText(context, "limit has been reached", Toast.LENGTH_LONG)
-                            .show()
+                            //Toast.makeText(context, "limit has been reached: " + currentTmeMill.toString(), Toast.LENGTH_SHORT)
+                            //.show()
+
                             //sendNotification(context)
                             //abortBroadcast
+                        }else{
+                            Toast.makeText(context, "hello world", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

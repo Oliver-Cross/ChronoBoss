@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     override protected fun onStop() {
         super.onStop()
-        unregisterReceiver(myAlarm)
+        //unregisterReceiver(myAlarm)
     }
 
     /*fun goQueryStats(view:View) {
