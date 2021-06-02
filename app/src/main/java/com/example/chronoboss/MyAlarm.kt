@@ -7,14 +7,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
-import java.util.*
 
 
 class MyAlarm : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        var topPackageName: String? = null
-        //Toast.makeText(context, "connected now", Toast.LENGTH_SHORT).show()
+        val testName:String = "com.android.settings"
+        val lim:Long? = 12217
         val usage: UsageStatsManager = context?.getSystemService(
             Context.USAGE_STATS_SERVICE
         ) as UsageStatsManager
@@ -26,18 +25,18 @@ class MyAlarm : BroadcastReceiver() {
                     it
                 )
             }
+        var limReached:Boolean? = false
         if (stats != null) {
-            var runningTask: SortedMap<Long, UsageStats> = TreeMap<Long, UsageStats>()
             for (usageStats in stats) {
-                runningTask.put(usageStats.lastTimeUsed, usageStats)
+                if(usageStats.packageName == testName){
+                    var currentTmeMill:Long? = usageStats.totalTimeInForeground
+                    if(currentTmeMill != null){
+                        if(currentTmeMill >= lim!!){
+                            Toast.makeText(context, "limit has been reached",  Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             }
-            if (runningTask.isEmpty()) {
-                topPackageName = "none"
-            } else {
-                topPackageName = runningTask.get(runningTask.lastKey())?.packageName
-
-            }
-            Toast.makeText(context, topPackageName, Toast.LENGTH_SHORT).show()
         }
     }
 }
