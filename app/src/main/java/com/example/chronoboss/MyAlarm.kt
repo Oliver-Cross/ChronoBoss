@@ -30,7 +30,7 @@ class MyAlarm : BroadcastReceiver() {
 
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        val testName: String = "com.android.chrome"
+        val testName: String = "com.android.settings"
         val lim: Long = 1000
         val usage: UsageStatsManager = context?.getSystemService(
             Context.USAGE_STATS_SERVICE
@@ -51,7 +51,10 @@ class MyAlarm : BroadcastReceiver() {
                     if (currentTmeMill != null) {
                         if (currentTmeMill >= lim) {
                             //Toast.makeText(context, "limit reached: " + currentTmeMill.toString(), Toast.LENGTH_SHORT).show()
+                            //sendNotifications(context)
+                            createNotificationChannel(context)
                             sendNotifications(context)
+
                             val aManager:AlarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
                             val intent:Intent = Intent(context, MyAlarm::class.java)
                             val pendingIntent:PendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -71,6 +74,15 @@ class MyAlarm : BroadcastReceiver() {
             }
         }
     }
+
+    /*val builder:NotificationCompat.Builder = NotificationCompat.Builder(context).
+    setSmallIcon(R.drawable.chronoboss_48x48).
+    setTicker("ticker").
+    setContentTitle("new notification").
+    setContentText("new message").
+    setAutoCancel(true)
+    val mNotificationManager:NotificationManager = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    mNotificationManager.notify(0, builder.build()) */
 
     /*private fun showNotification(context: Context?) {
         val contentIntent: PendingIntent =
@@ -141,14 +153,14 @@ class MyAlarm : BroadcastReceiver() {
     private fun sendNotifications(context: Context?) {
         var builder = context?.let {
             NotificationCompat.Builder(it, CHANNEL_ID)
-                .setSmallIcon(R.drawable.home_icon)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle("My notification")
                 .setContentText("Much longer text that cannot fit one line...")
                 .setStyle(
                     NotificationCompat.BigTextStyle()
                         .bigText("Much longer text that cannot fit one line...")
                 )
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
         }
         if (builder != null) {
             context?.let { NotificationManagerCompat.from(it) }?.let {
