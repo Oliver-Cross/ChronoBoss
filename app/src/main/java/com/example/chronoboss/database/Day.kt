@@ -9,7 +9,7 @@ data class Day (
     //Starting with dayId to get it to work. Changing it to a date representing a single day later.
     @PrimaryKey(autoGenerate = true)
     val dayId: Int,
-    val timeWasted: Int,
-    val timeLimit: Int,
+    val timeWasted: Long,
+    val timeLimit: Long,
     val application: String,
         )

@@ -66,6 +66,8 @@ class HomeFragment : Fragment() {
         //val readAllData = readAllData()
 
         binding.homeViewModel = homeViewModel
+        val day = Day(101, 80, 200, "chromer2")
+        homeViewModel.addDay(day)
 
 
 
@@ -75,7 +77,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    fun insertNewDay(dayId: Int, timeWasted: Int, timeLimit: Int, application: String){
+    fun insertNewDay(dayId: Int, timeWasted: Long, timeLimit: Long, application: String){
         val day = Day(dayId, timeWasted, timeLimit, application)
         // Add data to database
         mDayViewModel.addDay(day)

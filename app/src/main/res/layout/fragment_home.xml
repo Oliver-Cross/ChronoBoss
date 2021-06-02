@@ -28,47 +28,28 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:progress="50" />
+        android:progress="@{homeViewModel.percentageLong}"
+        tools:progress="10" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/today_usage_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:text="minutes remaining"
+        android:text="@{homeViewModel.todayUsageString}"
+        tools:text="[Remaining_num] minutes remaining"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/progressBar"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <TextView
-        android:id="@+id/min_remain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:text="placeholder"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-
-    <TextView
-        android:id="@+id/time_allocated"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:text="placeholder"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintEnd_toStartOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/today_time_limit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:text="minutes allocated"
+        android:text="@{homeViewModel.todayLimitString}"
+        tools:text="Current time limit: [limit_num]"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
@@ -88,7 +69,7 @@
         android:id="@+id/top_package_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{homeViewModel.dayStrings}"
+        android:text="@{homeViewModel.percentageString}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +79,8 @@
         android:id="@+id/top_package_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@{}"
+        tools:text="Usage Percent: [%]"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
