@@ -57,6 +57,26 @@ $dokka.location:com.example.chronoboss.progressFragment/ProgressViewModel/timeSa
 $dokka.location:com.example.chronoboss.progressFragment/ProgressViewModelFactory///PointingToDeclaration/app/com.example.chronoboss.progressFragment/-progress-view-model-factory/index.html
 $dokka.location:com.example.chronoboss.progressFragment/ProgressViewModelFactory/ProgressViewModelFactory/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.progressFragment/-progress-view-model-factory/-progress-view-model-factory.html
 $dokka.location:com.example.chronoboss.progressFragment/ProgressViewModelFactory/create/#java.lang.Class[TypeParam(bounds=[androidx.lifecycle.ViewModel?])]/PointingToDeclaration/app/com.example.chronoboss.progressFragment/-progress-view-model-factory/create.html
+$dokka.location:com.example.chronoboss.settingsFragment////PointingToDeclaration/app/com.example.chronoboss.settingsFragment/index.html
+$dokka.location:com.example.chronoboss.settingsFragment/SettingsFragment///PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-fragment/index.html
+$dokka.location:com.example.chronoboss.settingsFragment/SettingsFragment/SettingsFragment/#/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-fragment/-settings-fragment.html
+$dokka.location:com.example.chronoboss.settingsFragment/SettingsFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-fragment/on-create-view.html
+$dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModel///PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model/index.html
+$dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModel/SettingsViewModel/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model/-settings-view-model.html
+$dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModel/database/#/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model/database.html
+$dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModelFactory///PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model-factory/index.html
+$dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModelFactory/SettingsViewModelFactory/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model-factory/-settings-view-model-factory.html
+$dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModelFactory/create/#java.lang.Class[TypeParam(bounds=[androidx.lifecycle.ViewModel?])]/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model-factory/create.html
+$dokka.location:com.example.chronoboss.statsFragment////PointingToDeclaration/app/com.example.chronoboss.statsFragment/index.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsFragment///PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/index.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsFragment/StatsFragment/#/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/-stats-fragment.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/on-create-view.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsViewModel///PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/index.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsViewModel/StatsViewModel/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/-stats-view-model.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsViewModel/database/#/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/database.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsViewModelFactory///PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model-factory/index.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsViewModelFactory/StatsViewModelFactory/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model-factory/-stats-view-model-factory.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsViewModelFactory/create/#java.lang.Class[TypeParam(bounds=[androidx.lifecycle.ViewModel?])]/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model-factory/create.html
 $dokka.location:com.example.chronoboss////PointingToDeclaration/app/com.example.chronoboss/index.html
 $dokka.location:com.example.chronoboss/MainActivity///PointingToDeclaration/app/com.example.chronoboss/-main-activity/index.html
 $dokka.location:com.example.chronoboss/MainActivity/MainActivity/#/PointingToDeclaration/app/com.example.chronoboss/-main-activity/-main-activity.html
@@ -96,12 +116,6 @@ $dokka.location:com.example.chronoboss/QueryStatsUtils/getStats/#android.content
 $dokka.location:com.example.chronoboss/QueryStatsUtils/getTopPackage/#android.content.Context?/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/get-top-package.html
 $dokka.location:com.example.chronoboss/QueryStatsUtils/hasStatsPermission/#android.content.Context#android.app.Activity/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/has-stats-permission.html
 $dokka.location:com.example.chronoboss/QueryStatsUtils/requestUsageStatsPermission/#android.app.Activity/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/request-usage-stats-permission.html
-$dokka.location:com.example.chronoboss/SettingsFragment///PointingToDeclaration/app/com.example.chronoboss/-settings-fragment/index.html
-$dokka.location:com.example.chronoboss/SettingsFragment/SettingsFragment/#/PointingToDeclaration/app/com.example.chronoboss/-settings-fragment/-settings-fragment.html
-$dokka.location:com.example.chronoboss/SettingsFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.chronoboss/-settings-fragment/on-create-view.html
-$dokka.location:com.example.chronoboss/StatsFragment///PointingToDeclaration/app/com.example.chronoboss/-stats-fragment/index.html
-$dokka.location:com.example.chronoboss/StatsFragment/StatsFragment/#/PointingToDeclaration/app/com.example.chronoboss/-stats-fragment/-stats-fragment.html
-$dokka.location:com.example.chronoboss/StatsFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.chronoboss/-stats-fragment/on-create-view.html
 $dokka.location:com.example.chronoboss/TestActivity///PointingToDeclaration/app/com.example.chronoboss/-test-activity/index.html
 $dokka.location:com.example.chronoboss/TestActivity/TestActivity/#/PointingToDeclaration/app/com.example.chronoboss/-test-activity/-test-activity.html
 $dokka.location:com.example.chronoboss/TestFragment.Companion///PointingToDeclaration/app/com.example.chronoboss/-test-fragment/-companion/index.html
@@ -114,4 +128,6 @@ com.example.chronoboss
 com.example.chronoboss.database
 com.example.chronoboss.homeFragment
 com.example.chronoboss.progressFragment
+com.example.chronoboss.settingsFragment
+com.example.chronoboss.statsFragment
 
