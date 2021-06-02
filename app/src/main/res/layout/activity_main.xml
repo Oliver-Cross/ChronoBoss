@@ -27,6 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabIndicatorColor="#E54B4B"
+        app:tabSelectedTextColor="#E54B4B"
         app:tabTextColor="#D2D0BA" />
 
     <Button

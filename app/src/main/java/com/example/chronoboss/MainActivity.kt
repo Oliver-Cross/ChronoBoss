@@ -3,6 +3,7 @@ package com.example.chronoboss
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import android.graphics.drawable.Icon
 //import android.content.pm.PackageManager
 //import android.graphics.drawable.Drawable
 import android.view.View
@@ -35,21 +36,25 @@ class MainActivity : AppCompatActivity() {
         val fm: FragmentManager = supportFragmentManager
         val fragmentadapter: FragmentAdapter = FragmentAdapter(fm, lifecycle)
         viewpager.adapter = fragmentadapter
+        var tabNames: ArrayList<String> = ArrayList()
+        tabNames.add("Home")
+        tabNames.add("Stats")
+        tabNames.add("Progress")
+        tabNames.add("Settings")
 
+        var tabIcons: ArrayList<Int> = ArrayList()
+        tabIcons.add(R.drawable.home_icon)
+        tabIcons.add(R.drawable.stats_icon)
+        tabIcons.add(R.drawable.progress_icon)
+        tabIcons.add(R.drawable.settings_icon)
 
         TabLayoutMediator(tablayout, viewpager,
             object : TabLayoutMediator.TabConfigurationStrategy {
                 override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
-                    tab.setText("Home " + position+1)
+                    tab.setText(tabNames[position-1])
+                    tab.setIcon(tabIcons[position-1])
                 }
             }).attach()
-/*
-        tablayout.addTab(tablayout.newTab().setText("Home"))
-        tablayout.addTab(tablayout.newTab().setText("Stats"))
-        tablayout.addTab(tablayout.newTab().setText("Progress"))
-        tablayout.addTab(tablayout.newTab().setText("Settings"))
-*/
-
 
         tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
