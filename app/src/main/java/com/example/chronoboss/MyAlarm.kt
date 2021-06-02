@@ -24,8 +24,8 @@ class MyAlarm : BroadcastReceiver() {
     private val notificationID = 101
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        val testName: String = "com.android.settings"
-        val lim: Long = 12217
+        val testName: String = "com.android.chrome"
+        val lim: Long = 122170
         val usage: UsageStatsManager = context?.getSystemService(
             Context.USAGE_STATS_SERVICE
         ) as UsageStatsManager
@@ -47,7 +47,7 @@ class MyAlarm : BroadcastReceiver() {
                             //abortBroadcast
                             Toast.makeText(context, "limit has been reached", Toast.LENGTH_LONG)
                             .show()
-                            sendNotification(context)
+                            //sendNotification(context)
                             //abortBroadcast
                         }
                     }
