@@ -30,8 +30,8 @@ class MyAlarm : BroadcastReceiver() {
 
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        val testName: String = "com.android.settings"
-        val lim: Long = 70000
+        val testName: String = "com.android.chrome"
+        val lim: Long = 1000
         val usage: UsageStatsManager = context?.getSystemService(
             Context.USAGE_STATS_SERVICE
         ) as UsageStatsManager
