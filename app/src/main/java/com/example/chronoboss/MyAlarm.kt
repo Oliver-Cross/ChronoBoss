@@ -10,6 +10,7 @@ import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
+import android.provider.Settings.System.getString
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -49,7 +50,8 @@ class MyAlarm : BroadcastReceiver() {
                     var currentTmeMill: Long? = usageStats.totalTimeInForeground
                     if (currentTmeMill != null) {
                         if (currentTmeMill >= lim) {
-                            Toast.makeText(context, "limit reached", Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(context, "limit reached: " + currentTmeMill.toString(), Toast.LENGTH_SHORT).show()
+                            sendNotifications(context)
                             val aManager:AlarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
                             val intent:Intent = Intent(context, MyAlarm::class.java)
                             val pendingIntent:PendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -101,7 +103,7 @@ class MyAlarm : BroadcastReceiver() {
     } */
 
 
-    private fun createNotificationChannel(context: Context?) {
+    /*private fun createNotificationChannel(context: Context?) {
         // Creates notification on versions Oreo and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Notification Title"
@@ -115,9 +117,48 @@ class MyAlarm : BroadcastReceiver() {
                 context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
+    } */
+
+
+
+    private fun createNotificationChannel(context:Context?) {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "name"
+            val descriptionText = "description"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+                description = descriptionText
+            }
+            // Register the channel with the system
+            val notificationManager: NotificationManager =
+                context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
     }
 
-    private fun sendNotification(context: Context?) {
+    private fun sendNotifications(context: Context?) {
+        var builder = context?.let {
+            NotificationCompat.Builder(it, CHANNEL_ID)
+                .setSmallIcon(R.drawable.home_icon)
+                .setContentTitle("My notification")
+                .setContentText("Much longer text that cannot fit one line...")
+                .setStyle(
+                    NotificationCompat.BigTextStyle()
+                        .bigText("Much longer text that cannot fit one line...")
+                )
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        }
+        if (builder != null) {
+            context?.let { NotificationManagerCompat.from(it) }?.let {
+                with(it) {
+                    this?.notify(notificationID, builder.build())
+                }
+            }
+        }
+    }
+    /*private fun sendNotification(context: Context?) {
         val intent: Intent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
@@ -130,7 +171,7 @@ class MyAlarm : BroadcastReceiver() {
 
         val builder = context?.let {
             NotificationCompat.Builder(it, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setSmallIcon(R.drawable.home_icon)
                 .setContentTitle("Facebook time-limit reached")
                 .setContentText("You have used Facebook for 50/50 minutes today.")
                 // Set icons
@@ -151,7 +192,7 @@ class MyAlarm : BroadcastReceiver() {
                 }
             }
         }
-    }
+    }  */
 }
 
 
