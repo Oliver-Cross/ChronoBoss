@@ -7,10 +7,14 @@ import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
+import android.os.Build
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 
 
-    class QueryStatsUtils {
+class QueryStatsUtils {
+
+
 
         fun requestUsageStatsPermission(activity: Activity) {
             val intent: Intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
@@ -58,6 +62,27 @@ import android.provider.Settings
             }
             return topPackage
         }
+
+        fun getTopPackageForeground(context:Context?):Long?{
+            val topPck = getTopPackage(context)
+            return topPck?.totalTimeInForeground
+        }
+
+        fun getTopPackName(context: Context?):String?{
+            val topPck = getTopPackage(context)
+            return topPck?.packageName
+        }
+
+        @RequiresApi(Build.VERSION_CODES.Q)
+        fun getPckTimeVisible(context: Context?):Long?{
+            val topPck = getTopPackage(context)
+            return topPck?.totalTimeVisible
+        }
+
+
+
+
+
     }
 
 

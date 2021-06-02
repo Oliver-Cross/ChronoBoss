@@ -13,6 +13,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.Image
 import android.text.TextUtils.replace
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -28,12 +29,16 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment() {
 
     private lateinit var mDayViewModel: DayViewModel
+    var testInt:Int = 1
+
 
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         val icon: ImageView = view.findViewById(R.id.app_icon)
         val queryStatsUtils:QueryStatsUtils = QueryStatsUtils()
@@ -43,6 +48,11 @@ class HomeFragment : Fragment() {
             activity?.packageManager?.getApplicationIcon(
                 it
             )
+        }
+
+        val vw:TextView = view.findViewById(R.id.min_remain)
+        if(testInt != null) {
+            vw.setText(testInt.toString())
         }
         icon.setImageDrawable(topPackageIcon)
 
@@ -62,6 +72,18 @@ class HomeFragment : Fragment() {
     fun readAllData(): LiveData<List<Day>> {
         return mDayViewModel.readAllData()
     }
+
+    /*override fun onStart() {
+        super.onStart()
+        testInt++
+    } */
+
+
+
+
+
+
+
 
 
     /*fun getIcon(): Drawable? {

@@ -5,13 +5,15 @@ import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
+import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import android.widget.Toast
 
-class PollingService : Service() {
+class PollingService(context: Context?) : Service() {
     val ACTION:String = "com.example.chronoboss.PollingService"
+    //val context:Context? = applicationContext
     //private lateinit var mNotification: Notification
     //private lateinit var mManager:NotificationManager
 
@@ -19,24 +21,54 @@ class PollingService : Service() {
        return null
     }
 
+
+
     /*override fun onCreate(){
         initNotifiManager()
     } */
 
-    override fun onStart(intent: Intent?, startId:Int){
+    /*override fun onStart(intent: Intent?, startId:Int){
         PollingThread().start()
-    }
+    } */
+
+    /*fun getAppContext(): Context? {
+        return context
+    } */
 
 
 
 
-    class PollingThread : Thread(){
-        var count:Int = 0
+    /*class PollingThread() : Thread(){
+
+
+
+        val pollingService:PollingService = PollingService(
+
+        val queryStatsUtils:QueryStatsUtils = QueryStatsUtils()
+        val beginTimeForeground:Long? = queryStatsUtils.getTopPackageForeground(context)
+        var previousTimeForeground:Long? = beginTimeForeground
+        var difference:Long? = 0
+        val limit:Long = 120000
+        var limitReached:Boolean = false
+
+
+
         override fun run(){
-            //query usage stats
+            val queryStatsUtils:QueryStatsUtils = QueryStatsUtils()
+            var newTimeForeground = queryStatsUtils.getTopPackageForeground(context)
+            if (newTimeForeground != null) {
+                difference = (newTimeForeground - previousTimeForeground!!)
+            }
+            previousTimeForeground = newTimeForeground
+            if(difference!! >= limit){
+                limitReached = true
+            }
+
         }
 
-    }
+    } */
+
+
 
     /**class PollingThread extends Thread {
 
