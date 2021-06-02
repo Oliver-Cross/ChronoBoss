@@ -38,20 +38,20 @@ class MainActivity : AppCompatActivity() {
 
     override protected fun onStart() {
         super.onStart()
-        setAlarm()
+        //setAlarm()
         val intentFilter: IntentFilter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         registerReceiver(myAlarm, intentFilter)
     }
 
-    override protected fun onStop() {
+    /*override protected fun onStop() {
         super.onStop()
         //unregisterReceiver(myAlarm)
-    }
+    } */
 
-    /*fun goQueryStats(view:View) {
+    fun goQueryStats(view:View) {
         val intent = Intent(this, QueryStatsActivity::class.java)
         startActivity(intent)
-    } */
+    }
 
     fun setAlarm() {
         val timeInMillis: Long = TimeUnit.MINUTES.toMillis(1)
