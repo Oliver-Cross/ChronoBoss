@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.chronoboss.HomeFragment"
+        android:name="com.example.chronoboss.homeFragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -15,18 +15,13 @@
             app:destination="@id/databaseTestFragment" />
     </fragment>
     <fragment
-        android:id="@+id/progressFragment"
-        android:name="com.example.chronoboss.ProgressFragment"
-        android:label="fragment_progress"
-        tools:layout="@layout/fragment_progress" />
-    <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.chronoboss.SettingsFragment"
+        android:name="com.example.chronoboss.settingsFragment.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/statsFragment"
-        android:name="com.example.chronoboss.StatsFragment"
+        android:name="com.example.chronoboss.statsFragment.StatsFragment"
         android:label="fragment_stats"
         tools:layout="@layout/fragment_stats" />
     <fragment
@@ -34,4 +29,8 @@
         android:name="com.example.chronoboss.database.DatabaseTestFragment"
         android:label="fragment_database_test"
         tools:layout="@layout/fragment_database_test" />
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="com.example.chronoboss.progressFragment.ProgressFragment"
+        android:label="ProgressFragment" />
 </navigation>
