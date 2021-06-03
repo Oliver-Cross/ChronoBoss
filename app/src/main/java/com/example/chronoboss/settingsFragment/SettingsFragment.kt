@@ -1,5 +1,6 @@
 package com.example.chronoboss.settingsFragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,10 @@ import com.example.chronoboss.databinding.FragmentProgressBinding
 import com.example.chronoboss.databinding.FragmentSettingsBinding
 import com.example.chronoboss.statsFragment.StatsViewModel
 import com.example.chronoboss.statsFragment.StatsViewModelFactory
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,14 +48,9 @@ class SettingsFragment : Fragment() {
         val viewModelFactory = SettingsViewModelFactory(dataSource, application)
         val settingsViewModel = ViewModelProvider(this, viewModelFactory).get(SettingsViewModel::class.java)
 
-
-
         binding.settingsViewModel = settingsViewModel
 
-
-
         binding.setLifecycleOwner(this)
-
 
         return binding.root
     }
