@@ -23,7 +23,7 @@ class MakeItWork : Service() {
     private val runnableService: Runnable = object : Runnable {
         override fun run() {
             val name: String = "com.android.settings"
-            val limit: Long = 79000
+            val limit: Long = 180000
             val usage: UsageStatsManager =
                 context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
             var time: Long? = System.currentTimeMillis()
@@ -37,18 +37,21 @@ class MakeItWork : Service() {
                         var currentTimeMill: Long? = usageStats.totalTimeInForeground
                         if (currentTimeMill != null) {
                             if (currentTimeMill >= limit) {
-                                Toast.makeText(context, "limit reached", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "limit reached" + currentTimeMill.toString(), Toast.LENGTH_SHORT).show()
                                 limReached = true
-                                val intent:Intent = Intent(context, MakeItWork::class.java)
-                                stopService(intent)
+                                //val intent:Intent = Intent(context, MakeItWork::class.java)
                             } else {
-                                Toast.makeText(context, "limit not reached", Toast.LENGTH_SHORT)
+                                Toast.makeText(context, "limit not reached" + currentTimeMill.toString(), Toast.LENGTH_SHORT)
                                     .show()
                             }
                         }
                     }
                 }
-                mHandler!!.postDelayed(this, DEFAULT_SYNC_INTERVAL)
+                if (limReached) {
+                    mHandler!!.postDelayed(this, DEFAULT_SYNC_DONE)
+                } else {
+                    mHandler!!.postDelayed(this, DEFAULT_SYNC_INTERVAL)
+                }
             }
         }
     }
@@ -68,6 +71,7 @@ class MakeItWork : Service() {
 
     companion object {
         // default interval for syncing data
-        const val DEFAULT_SYNC_INTERVAL = (5 * 1000).toLong()
+        const val DEFAULT_SYNC_INTERVAL = (30 * 1000).toLong()
+        const val DEFAULT_SYNC_DONE = (43200000).toLong()
     }
 }
