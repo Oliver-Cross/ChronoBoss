@@ -2,12 +2,14 @@ package com.example.chronoboss.homeFragment
 
 import android.app.usage.UsageStats
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +26,7 @@ class HomeFragment : Fragment() {
     private lateinit var mDayViewModel: DayViewModel
     private lateinit var binding: FragmentHomeBinding
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,7 +73,7 @@ class HomeFragment : Fragment() {
         //Insertion example
         //val day = Day(1050, 40, 200, "chromer2")
         //homeViewModel.addDay(day)
-        var tWaste:Long? = topPck?.totalTimeInForeground
+        var tWaste:Long? = topPck?.totalTimeVisible
         var converted:Long = 0
         if(tWaste != null){
             converted = (tWaste.toFloat()/60000.toFloat()).toLong()

@@ -51,7 +51,7 @@ import android.provider.Settings
             for(pck in usageStats){
                 if((pck.totalTimeInForeground > timeUsed) &&
                     (pck.packageName != "com.google.android.apps.nexuslauncher") &&
-                    (pck.packageName != "com.example.chronoboss")){
+                    (pck.packageName != "com.example.chronoboss") && pck.packageName != "com.teslacoilsw.launcher"){
                     timeUsed = pck.totalTimeInForeground
                     topPackage = pck
                 }

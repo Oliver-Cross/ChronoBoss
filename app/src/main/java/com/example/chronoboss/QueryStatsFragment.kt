@@ -11,14 +11,17 @@ import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.pm.ApplicationInfo
+import android.os.Build
 import android.provider.Settings
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 
 /** fragment class that queries usage statistics for the user */
 class QueryStatsFragment() : Fragment() {
 
     /** inflates the fragment for the activity
      */
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +39,7 @@ class QueryStatsFragment() : Fragment() {
         //set the text to the top package name
         setTopView?.setText(top?.packageName)
         //convert the time the top app was used to a string
-        val topTimeString:String? = top?.totalTimeInForeground.toString()
+        val topTimeString:String? = top?.totalTimeVisible.toString()
         //find the textview for the top package time used
         val timeV:TextView? = view.findViewById(R.id.top_package_time)
         //set it to the time the app was used
