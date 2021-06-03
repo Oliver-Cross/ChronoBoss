@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
         //Insertion example
         //val day = Day(1050, 40, 200, "chromer2")
         //homeViewModel.addDay(day)
-        var tWaste:Long? = topPck?.totalTimeVisible
+        var tWaste:Long? = topPck?.totalTimeInForeground
         var converted:Long = 0
         if(tWaste != null){
             converted = (tWaste.toFloat()/60000.toFloat()).toLong()

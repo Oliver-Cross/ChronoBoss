@@ -39,7 +39,7 @@ class QueryStatsFragment() : Fragment() {
         //set the text to the top package name
         setTopView?.setText(top?.packageName)
         //convert the time the top app was used to a string
-        val topTimeString:String? = top?.totalTimeVisible.toString()
+        val topTimeString:String? = top?.totalTimeInForeground.toString()
         //find the textview for the top package time used
         val timeV:TextView? = view.findViewById(R.id.top_package_time)
         //set it to the time the app was used
@@ -71,19 +71,19 @@ class QueryStatsFragment() : Fragment() {
      *
      */
     fun getTopPackage():UsageStats?{
-        val usageSt = getStats(context)
+        val usageStats = getStats(context)
         var timeUsed:Long = 0
-        var topPack:UsageStats? = null
-        for(pck in usageSt){
-            if((pck.totalTimeInForeground > timeUsed ) &&
+        var topPackage:UsageStats? = null
+        for(pck in usageStats){
+            if((pck.totalTimeInForeground > timeUsed) &&
                 (pck.packageName != "com.google.android.apps.nexuslauncher") &&
-                (pck.packageName != "com.example.chronoboss")){
+                (pck.packageName != "com.example.chronoboss") && (pck.packageName != "com.teslacoilsw.launcher")){
                 timeUsed = pck.totalTimeInForeground
-                topPack = pck
+                topPackage = pck
             }
 
         }
-        return topPack
+        return topPackage
     }
 
     /** function to check whether our app has been granted access to query usage
