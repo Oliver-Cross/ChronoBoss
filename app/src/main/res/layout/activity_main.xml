@@ -26,7 +26,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:tabIconTint="#E54B4B"
         app:tabIndicatorColor="#E54B4B"
+        app:tabPaddingEnd="6dp"
+        app:tabPaddingStart="6dp"
         app:tabSelectedTextColor="#E54B4B"
         app:tabTextColor="#D2D0BA" />
 
