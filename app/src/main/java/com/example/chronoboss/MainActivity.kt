@@ -21,15 +21,16 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
 
     val myAlarm: MyAlarm = MyAlarm()
-    private lateinit var context: Context
+    //private lateinit var context: Context
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        startService(Intent( this, MakeItWork::class.java ) )
 
-        this.context = this
+        //this.context = this
         /*val alarm: Intent = Intent(this.context, MyAlarm::class.java)
         var alarmRunning: Boolean? = (PendingIntent.getBroadcast(
             this.context,
@@ -50,32 +51,33 @@ class MainActivity : AppCompatActivity() {
             )
         } */
 
-            //Initialize navigation bar
-            val navHostFragment =
-                supportFragmentManager.findFragmentById(R.id.nav_host_controller) as NavHostFragment
-            val navController = navHostFragment.navController
-            val navigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
-            navigationView.setupWithNavController(navController)
-        }
+        //Initialize navigation bar
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_controller) as NavHostFragment
+        val navController = navHostFragment.navController
+        val navigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        navigationView.setupWithNavController(navController)
+    }
 
-        override protected fun onStart() {
+    /*override protected fun onStart() {
         super.onStart()
         //setAlarm()
         val intentFilter: IntentFilter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         registerReceiver(myAlarm, intentFilter)
-    }
+    }*/
 
-        /*override protected fun onStop() {
+    /*override protected fun onStop() {
         super.onStop()
         //unregisterReceiver(myAlarm)
     } */
 
-        fun goQueryStats(view: View) {
-            val intent = Intent(this, QueryStatsActivity::class.java)
-            startActivity(intent)
-        }
+    fun goQueryStats(view: View) {
+        val intent = Intent(this, QueryStatsActivity::class.java)
+        startActivity(intent)
+    }
+}
 
-        fun setAlarm() {
+        /*fun setAlarm() {
             val timeInMillis: Long = TimeUnit.SECONDS.toMillis(1)
             val alarmManager: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent: Intent = Intent(this, MyAlarm::class.java)
@@ -87,4 +89,4 @@ class MainActivity : AppCompatActivity() {
                 pendingIntent
             )
         }
-    }
+    } */
