@@ -1,9 +1,11 @@
 package com.example.chronoboss.homeFragment
 
 import android.app.usage.UsageStats
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -53,7 +55,7 @@ class HomeFragment : Fragment() {
         icon.setImageDrawable(topPackageIcon)
 
 
-
+        Log.i("HomeFragment", "onCreateView Called")
 
 
         // Room database setup
@@ -98,6 +100,40 @@ class HomeFragment : Fragment() {
     fun readAllData(): LiveData<List<Day>> {
         return mDayViewModel.readAllData()
     }
+
+
+    /*
+    override fun onResume(){
+        super.onResume()
+        Log.i("HomeFragment", "onResume Called")
+    }
+    */
+
+    override fun onStart(){
+        super.onStart()
+        Log.i("HomeFragment", "onStart Called")
+
+        mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
+
+        val queryStatsUtils: QueryStatsUtils = QueryStatsUtils()
+        val topPck:UsageStats? = queryStatsUtils.getTopPackage(context)
+
+        var tWaste:Long? = topPck?.totalTimeInForeground
+        var converted:Long = 0
+        if(tWaste != null){
+            converted = (tWaste.toFloat()/60000.toFloat()).toLong()
+        }
+
+        if (converted != null && converted > 0) {
+            mDayViewModel.updateTodayTimeWasted(converted)
+        }
+
+
+
+    }
+
+
+
 
 
     /*fun getIcon(): Drawable? {
