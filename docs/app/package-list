@@ -82,11 +82,13 @@ $dokka.location:com.example.chronoboss.statsFragment/StatsViewModelFactory///Poi
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModelFactory/StatsViewModelFactory/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model-factory/-stats-view-model-factory.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModelFactory/create/#java.lang.Class[TypeParam(bounds=[androidx.lifecycle.ViewModel?])]/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model-factory/create.html
 $dokka.location:com.example.chronoboss////PointingToDeclaration/app/com.example.chronoboss/index.html
+$dokka.location:com.example.chronoboss/FragmentAdapter///PointingToDeclaration/app/com.example.chronoboss/-fragment-adapter/index.html
+$dokka.location:com.example.chronoboss/FragmentAdapter/FragmentAdapter/#androidx.fragment.app.FragmentManager#androidx.lifecycle.Lifecycle/PointingToDeclaration/app/com.example.chronoboss/-fragment-adapter/-fragment-adapter.html
+$dokka.location:com.example.chronoboss/FragmentAdapter/createFragment/#kotlin.Int/PointingToDeclaration/app/com.example.chronoboss/-fragment-adapter/create-fragment.html
+$dokka.location:com.example.chronoboss/FragmentAdapter/getItemCount/#/PointingToDeclaration/app/com.example.chronoboss/-fragment-adapter/get-item-count.html
 $dokka.location:com.example.chronoboss/MainActivity///PointingToDeclaration/app/com.example.chronoboss/-main-activity/index.html
 $dokka.location:com.example.chronoboss/MainActivity/MainActivity/#/PointingToDeclaration/app/com.example.chronoboss/-main-activity/-main-activity.html
 $dokka.location:com.example.chronoboss/MainActivity/goQueryStats/#android.view.View/PointingToDeclaration/app/com.example.chronoboss/-main-activity/go-query-stats.html
-$dokka.location:com.example.chronoboss/MainActivity/myAlarm/#/PointingToDeclaration/app/com.example.chronoboss/-main-activity/my-alarm.html
-$dokka.location:com.example.chronoboss/MainActivity/setAlarm/#/PointingToDeclaration/app/com.example.chronoboss/-main-activity/set-alarm.html
 $dokka.location:com.example.chronoboss/MyAlarm///PointingToDeclaration/app/com.example.chronoboss/-my-alarm/index.html
 $dokka.location:com.example.chronoboss/MyAlarm/MyAlarm/#/PointingToDeclaration/app/com.example.chronoboss/-my-alarm/-my-alarm.html
 $dokka.location:com.example.chronoboss/MyAlarm/onReceive/#android.content.Context?#android.content.Intent?/PointingToDeclaration/app/com.example.chronoboss/-my-alarm/on-receive.html
