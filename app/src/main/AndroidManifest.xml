@@ -3,21 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.chronoboss">
 
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
-
-    <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
-
-
-
-
-
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
-
-
 
     <application
         android:allowBackup="true"
@@ -26,17 +19,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChronoBoss">
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".TestActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QueryStatsActivity"></activity>
-        <receiver android:name=".MyAlarm" android:enabled="true"/>
-
+        <activity android:name=".QueryStatsActivity" />
+        <service android:name=".MakeItWork" />
     </application>
-
 </manifest>
