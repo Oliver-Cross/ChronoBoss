@@ -44,6 +44,15 @@ class HomeViewModel (
         }
     }
 
+    fun updateTodayTimeWasted(timeWasted: Long) {
+        // Runs this code in a background thread
+        viewModelScope.launch(Dispatchers.IO) {
+            val todayDay = database.getTodayDay()
+            val updatedDay = Day(todayDay.dayId, timeWasted, todayDay.timeLimit, todayDay.application)
+            repository.updateDay(updatedDay)
+        }
+    }
+
 
 }
 
