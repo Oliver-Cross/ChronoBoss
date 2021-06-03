@@ -7,17 +7,30 @@
     tools:context=".MainActivity">
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_nav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#160F29"
-        app:itemIconTint="#D2D0BA"
-        app:itemTextColor="#D2D0BA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/nav_bar_menu" />
+        app:tabIconTint="#E54B4B"
+        app:tabIndicatorColor="#E54B4B"
+        app:tabPaddingEnd="3dp"
+        app:tabPaddingStart="3dp"
+        app:tabSelectedTextColor="#E54B4B"
+        app:tabTextColor="#D2D0BA" />
 
     <Button
         android:id="@+id/button"
@@ -29,20 +42,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nav_host_controller"
+        app:layout_constraintTop_toBottomOf="@+id/view_pager_nav"
         app:layout_constraintVertical_bias="1.0" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_controller"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottom_navigation_view"
-        app:navGraph="@navigation/chronoboss_nav" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
