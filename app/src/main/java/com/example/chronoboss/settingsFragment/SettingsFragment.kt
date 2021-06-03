@@ -68,7 +68,6 @@ class SettingsFragment : Fragment() {
             }
         }
         )
-        loadData()
         binding.settingsViewModel = settingsViewModel
 
         binding.setLifecycleOwner(this)
