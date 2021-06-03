@@ -52,7 +52,5 @@ class HomeViewModel (
             repository.updateDay(updatedDay)
         }
     }
-
-
 }
 

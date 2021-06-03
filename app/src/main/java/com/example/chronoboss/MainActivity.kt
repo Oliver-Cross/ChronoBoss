@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        startService(Intent( this, MakeItWork::class.java ) )
 
         //Initialize navigation bar
         /*
@@ -100,6 +101,4 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, QueryStatsActivity::class.java)
         startActivity(intent)
     }
-
-
 }

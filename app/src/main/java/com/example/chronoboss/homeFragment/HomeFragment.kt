@@ -1,10 +1,14 @@
 package com.example.chronoboss.homeFragment
 
+import android.app.AppOpsManager
 import android.app.usage.UsageStats
+import android.content.Context
 import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,6 +40,9 @@ class HomeFragment : Fragment() {
     ): View? {
 
         // Binding setup
+        if(!hasPermission()){
+            requestUsageStatsPermission()
+        }
         binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
             R.layout.fragment_home,container,false)
 
@@ -73,8 +80,8 @@ class HomeFragment : Fragment() {
         binding.homeViewModel = homeViewModel
 
         //Insertion example
-        //val day = Day(1050, 40, 200, "chromer2")
-        //homeViewModel.addDay(day)
+        val day = Day(1050, 40, 200, "chromer2")
+        homeViewModel.addDay(day)
         var tWaste:Long? = topPck?.totalTimeInForeground
         var converted:Long = 0
         if(tWaste != null){
@@ -109,29 +116,47 @@ class HomeFragment : Fragment() {
     }
     */
 
-    override fun onStart(){
+    override fun onStart() {
         super.onStart()
         Log.i("HomeFragment", "onStart Called")
 
         mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
 
         val queryStatsUtils: QueryStatsUtils = QueryStatsUtils()
-        val topPck:UsageStats? = queryStatsUtils.getTopPackage(context)
+        val topPck: UsageStats? = queryStatsUtils.getTopPackage(context)
 
-        var tWaste:Long? = topPck?.totalTimeInForeground
-        var converted:Long = 0
-        if(tWaste != null){
-            converted = (tWaste.toFloat()/60000.toFloat()).toLong()
+        var tWaste: Long? = topPck?.totalTimeInForeground
+        var converted: Long = 0
+        if (tWaste != null) {
+            converted = (tWaste.toFloat() / 60000.toFloat()).toLong()
         }
 
         if (converted != null && converted > 0) {
             mDayViewModel.updateTodayTimeWasted(converted)
         }
-
-
-
     }
 
+        fun requestUsageStatsPermission() {
+            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+        }
+
+
+
+
+    fun hasPermission():Boolean {
+        val applicationInform: ApplicationInfo? =
+            context?.packageName?.let { activity?.packageManager?.getApplicationInfo(it, 0) }
+        val appOps: AppOpsManager =
+            context?.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+        val mode: Int? = applicationInform?.let {
+            appOps.checkOpNoThrow(
+                AppOpsManager.OPSTR_GET_USAGE_STATS,
+                it.uid,
+                applicationInform.packageName
+            )
+        }
+        return (mode == AppOpsManager.MODE_ALLOWED)
+    }
 
 
 
