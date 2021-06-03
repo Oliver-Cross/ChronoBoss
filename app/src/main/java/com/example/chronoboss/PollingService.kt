@@ -52,7 +52,7 @@ class PollingService : Service(){
             //do something when condition met
 
             val lim:Long = 1000
-            val usage:UsageStatsManager =
+
         }
     }
 

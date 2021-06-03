@@ -2,15 +2,15 @@ package com.example.chronoboss
 
 import android.app.Service
 
-class MyService : Service {
 
 
 
-}
 
 
-public class MyService extends Service {
-    BroadcastReceiver mReceiver;
+public class MyService {
+
+    private val check:Boolean = true
+    /*BroadcastReceiver mReceiver;
 
     // use this as an inner class like here or as a top-level class
     public class MyReceiver extends BroadcastReceiver {
@@ -34,5 +34,5 @@ public class MyService extends Service {
         filter.addAction("anotherAction");
         mReceiver = new MyReceiver();
         registerReceiver(mReceiver, filter);
-    }
+    } */
 }
