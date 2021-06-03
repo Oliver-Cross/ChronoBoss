@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.R
@@ -30,14 +31,17 @@ class StatsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentStatsBinding>(inflater,
-            R.layout.fragment_stats,container,false)
+        binding = DataBindingUtil.inflate<FragmentStatsBinding>(
+            inflater,
+            R.layout.fragment_stats, container, false
+        )
 
         // Room database setup
         val application = requireNotNull(this.activity).application
         val dataSource = DayDatabase.getDatabase(application).dayDao()
         val viewModelFactory = StatsViewModelFactory(dataSource, application)
-        val statsViewModel = ViewModelProvider(this, viewModelFactory).get(StatsViewModel::class.java)
+        val statsViewModel =
+            ViewModelProvider(this, viewModelFactory).get(StatsViewModel::class.java)
 
         binding.statsViewModel = statsViewModel
 
@@ -49,8 +53,9 @@ class StatsFragment : Fragment() {
 
         return binding.root
     }
+
     @SuppressLint("ResourceAsColor")
-    fun setLineChartData(line_chart: LineChart, statsViewModel: StatsViewModel){
+    fun setLineChartData(line_chart: LineChart, statsViewModel: StatsViewModel) {
 
         val xvalues = ArrayList<String>()
         xvalues.add("Monday")
@@ -64,19 +69,46 @@ class StatsFragment : Fragment() {
         /* Line entry: requires an object Entry, has constructors:
                 x: float, y: float, and option for a drawable to make it pretty later
          */
-        val lineEntry: ArrayList<Entry> = ArrayList()
-        val entry = statsViewModel.todayUsageString
 
-        Transformations.map(entry) {
-            lineEntry.add(Entry(0F, it))
-        }
-        lineEntry.add(Entry(0f, 200F))
+
+        val lineEntry: ArrayList<Entry> = ArrayList()
+       // val y_value = statsViewModel.todayDay.timeWasted
+
+        /// this is the data I actually want to show
+
+
+        /*
+        val lineDataEntries2: ArrayList<Entry> = ArrayList()
+        statsViewModel.allDays.observe(viewLifecycleOwner, Observer {
+            it.forEachIndexed { index, element ->
+                lineDataEntries2.add(Entry(index.toFloat(), element.timeWasted.toFloat()))
+            }
+            line_chart.invalidate()
+        })
+
+        val progressDataSet = LineDataSet(lineDataEntries2, "Progress of the Week!")
+        progressDataSet.color = resources.getColor(R.color.teal_200)
+
+        val data = LineData(progressDataSet)
+
+        line_chart.data = data
+        line_chart.setBackgroundColor(R.color.white)
+        line_chart.animateXY(2000, 2000)
+
+         */
+
+
+
+        //lineEntry.add(Entry(0f, y_value.toFloat()))
         lineEntry.add(Entry(1f, 95F))
         lineEntry.add(Entry(2f, 75F))
         lineEntry.add(Entry(3f, 80F))
         lineEntry.add(Entry(4f, 85F))
         lineEntry.add(Entry(5f, 90F))
         lineEntry.add(Entry(6f, 95F))
+
+
+
 
         val progressDataSet = LineDataSet(lineEntry, "Progress of the Week!")
         progressDataSet.color = resources.getColor(R.color.teal_200)
@@ -86,6 +118,8 @@ class StatsFragment : Fragment() {
         line_chart.data = data
         line_chart.setBackgroundColor(R.color.white)
         line_chart.animateXY(2000, 2000)
+
+
 
 
     }

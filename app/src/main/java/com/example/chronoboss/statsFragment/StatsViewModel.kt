@@ -3,7 +3,11 @@ package com.example.chronoboss.statsFragment
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.viewModelScope
+import com.example.chronoboss.database.Day
 import com.example.chronoboss.database.DayDao
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class StatsViewModel (
     val database: DayDao,
@@ -11,11 +15,8 @@ class StatsViewModel (
 ): AndroidViewModel(application) {
 
 
-    private val allDays = database.readAllData()
+    val allDays = database.readAllData()
     private val todayData = database.getToday()
 
-
-
-    val todayUsageString = Transformations.map(todayData) {(it.timeWasted.toFloat())}
 
 }
