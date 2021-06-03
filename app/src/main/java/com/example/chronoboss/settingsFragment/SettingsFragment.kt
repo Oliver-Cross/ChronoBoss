@@ -50,49 +50,60 @@ class SettingsFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = DayDatabase.getDatabase(application).dayDao()
         val viewModelFactory = SettingsViewModelFactory(dataSource, application)
-        val settingsViewModel = ViewModelProvider(this, viewModelFactory).get(SettingsViewModel::class.java)
-        option_push_notifications_switch?.setOnCheckedChangeListener { _, isChecked ->
+        val settingsViewModel: SettingsViewModel = ViewModelProvider(this, viewModelFactory).get(SettingsViewModel::class.java)
+
+        var switch = option_push_notifications_switch?.setOnCheckedChangeListener { _, isChecked ->
             saveData()
         }
-        option_app_budget_slider.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+
+        var seekB = option_app_budget_slider?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+
+                loadData()
                 saveData()
+
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                TODO("Not yet implemented")
+                loadData()
             }
-        }
-        )
+        })
+
         binding.settingsViewModel = settingsViewModel
 
-        binding.setLifecycleOwner(this)
+       binding.setLifecycleOwner(this)
 
-        return binding.root
+         return binding.root
+
+
+
     }
 
     private fun saveData(){
         val sharedPrefs = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val editor : SharedPreferences.Editor = sharedPrefs?.edit() ?: return
+        val editor : SharedPreferences.Editor = sharedPrefs?.edit()?:return
+
         with(sharedPrefs.edit()){
             putBoolean("NOTIFICATIONS_KEY", option_push_notifications_switch.isChecked)
             putInt("APP_BUDGET_KEY", option_app_budget_slider.progress)
         }
     }
+
     fun loadData(){
         val sharedPrefs = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val saved_notifications_switch = sharedPrefs?.getBoolean("NOTIFICATIONS_KEY", true)
-        val saved_seek_progress = sharedPrefs?.getInt("APP_BUDGET_KEY", 120)
+        val saved_notifications_switch = sharedPrefs?.getBoolean("NOTIFICATIONS_KEY",true)
+        val saved_seek_progress = sharedPrefs?.getInt("APP_BUDGET_KEY",120)
+
         if (saved_notifications_switch != null) {
             option_push_notifications_switch.isChecked = saved_notifications_switch
         }
         if (saved_seek_progress != null) {
-            option_app_budget_slider.progress = saved_seek_progress
-        }
+          option_app_budget_slider.progress = saved_seek_progress
+       }
     }
 
 }
