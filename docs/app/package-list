@@ -75,6 +75,7 @@ $dokka.location:com.example.chronoboss.statsFragment////PointingToDeclaration/a
 $dokka.location:com.example.chronoboss.statsFragment/StatsFragment///PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/index.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsFragment/StatsFragment/#/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/-stats-fragment.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/on-create-view.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsFragment/setLineChartData/#com.github.mikephil.charting.charts.LineChart/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/set-line-chart-data.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModel///PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/index.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModel/StatsViewModel/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/-stats-view-model.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModel/database/#/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/database.html
