@@ -68,11 +68,17 @@ class HomeFragment : Fragment() {
         binding.homeViewModel = homeViewModel
 
         //Insertion example
-        val day = Day(1050, 40, 200, "chromer2")
-        homeViewModel.addDay(day)
-        homeViewModel.updateTodayTimeWasted(100)
+        //val day = Day(1050, 40, 200, "chromer2")
+        //homeViewModel.addDay(day)
+        var tWaste:Long? = topPck?.totalTimeInForeground
+        var converted:Long = 0
+        if(tWaste != null){
+            converted = (tWaste.toFloat()/60000.toFloat()).toLong()
+        }
 
-
+        if (converted != null && converted > 0) {
+            homeViewModel.updateTodayTimeWasted(converted)
+        }
 
         binding.setLifecycleOwner(this)
 
