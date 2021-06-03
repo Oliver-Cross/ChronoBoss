@@ -77,4 +77,8 @@ dependencies {
 
     //MPAndroidChart component
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // viewPager2 dependency
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
 }
