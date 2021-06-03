@@ -13,8 +13,10 @@ $dokka.location:com.example.chronoboss.database/Day/timeWasted/#/PointingToDecla
 $dokka.location:com.example.chronoboss.database/DayDao///PointingToDeclaration/app/com.example.chronoboss.database/-day-dao/index.html
 $dokka.location:com.example.chronoboss.database/DayDao/addDay/#com.example.chronoboss.database.Day/PointingToDeclaration/app/com.example.chronoboss.database/-day-dao/add-day.html
 $dokka.location:com.example.chronoboss.database/DayDao/getToday/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-dao/get-today.html
+$dokka.location:com.example.chronoboss.database/DayDao/getTodayDay/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-dao/get-today-day.html
 $dokka.location:com.example.chronoboss.database/DayDao/getTotalTimeSaved/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-dao/get-total-time-saved.html
 $dokka.location:com.example.chronoboss.database/DayDao/readAllData/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-dao/read-all-data.html
+$dokka.location:com.example.chronoboss.database/DayDao/update/#com.example.chronoboss.database.Day/PointingToDeclaration/app/com.example.chronoboss.database/-day-dao/update.html
 $dokka.location:com.example.chronoboss.database/DayDatabase.Companion///PointingToDeclaration/app/com.example.chronoboss.database/-day-database/-companion/index.html
 $dokka.location:com.example.chronoboss.database/DayDatabase.Companion/getDatabase/#android.content.Context/PointingToDeclaration/app/com.example.chronoboss.database/-day-database/-companion/get-database.html
 $dokka.location:com.example.chronoboss.database/DayDatabase///PointingToDeclaration/app/com.example.chronoboss.database/-day-database/index.html
@@ -24,6 +26,7 @@ $dokka.location:com.example.chronoboss.database/DayRepository///PointingToDeclar
 $dokka.location:com.example.chronoboss.database/DayRepository/DayRepository/#com.example.chronoboss.database.DayDao/PointingToDeclaration/app/com.example.chronoboss.database/-day-repository/-day-repository.html
 $dokka.location:com.example.chronoboss.database/DayRepository/addDay/#com.example.chronoboss.database.Day/PointingToDeclaration/app/com.example.chronoboss.database/-day-repository/add-day.html
 $dokka.location:com.example.chronoboss.database/DayRepository/readAllData/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-repository/read-all-data.html
+$dokka.location:com.example.chronoboss.database/DayRepository/updateDay/#com.example.chronoboss.database.Day/PointingToDeclaration/app/com.example.chronoboss.database/-day-repository/update-day.html
 $dokka.location:com.example.chronoboss.database/DayViewModel///PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/index.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/DayViewModel/#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/-day-view-model.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/addDay/#com.example.chronoboss.database.Day/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/add-day.html
@@ -42,6 +45,7 @@ $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/packageName/#/
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/percentageLong/#/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/percentage-long.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/todayLimitString/#/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/today-limit-string.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/todayUsageString/#/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/today-usage-string.html
+$dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/updateTodayTimeWasted/#kotlin.Long/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/update-today-time-wasted.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModelFactory///PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model-factory/index.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModelFactory/HomeViewModelFactory/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model-factory/-home-view-model-factory.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModelFactory/create/#java.lang.Class[TypeParam(bounds=[androidx.lifecycle.ViewModel?])]/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model-factory/create.html
