@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(tablayout, viewpager,
             object : TabLayoutMediator.TabConfigurationStrategy {
                 override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
-                    tab.setText(tabNames[position-1])
-                    tab.setIcon(tabIcons[position-1])
+                    tab.setText(tabNames[position])
+                    tab.setIcon(tabIcons[position])
                 }
             }).attach()
 
