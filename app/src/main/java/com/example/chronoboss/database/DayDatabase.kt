@@ -27,7 +27,7 @@ abstract class DayDatabase: RoomDatabase() {
                     context.applicationContext,
                     DayDatabase::class.java,
                     "day_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
             }

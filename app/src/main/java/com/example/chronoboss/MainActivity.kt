@@ -101,6 +101,4 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, QueryStatsActivity::class.java)
         startActivity(intent)
     }
-
-
 }
