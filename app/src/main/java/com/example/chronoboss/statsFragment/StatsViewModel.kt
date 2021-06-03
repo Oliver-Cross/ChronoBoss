@@ -12,5 +12,10 @@ class StatsViewModel (
 
 
     private val allDays = database.readAllData()
+    private val todayData = database.getToday()
+
+
+
+    val todayUsageString = Transformations.map(todayData) {(it.timeWasted.toFloat())}
 
 }
