@@ -28,6 +28,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
+/**
+ * Creates a progress graph.
+ */
 class StatsFragment : Fragment() {
 
     private lateinit var binding: FragmentStatsBinding

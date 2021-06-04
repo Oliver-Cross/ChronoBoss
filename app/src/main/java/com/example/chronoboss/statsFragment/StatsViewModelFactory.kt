@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.database.DayDao
 
 
+/**
+ * Creates stats view model.
+ */
 class StatsViewModelFactory(
     private val dataSource: DayDao,
     private val application: Application

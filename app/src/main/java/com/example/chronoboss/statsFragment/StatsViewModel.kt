@@ -9,6 +9,9 @@ import com.example.chronoboss.database.DayDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * Links progress graph to the UI.
+ */
 class StatsViewModel (
     val database: DayDao,
     application: Application
