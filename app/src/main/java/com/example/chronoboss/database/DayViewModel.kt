@@ -39,5 +39,14 @@ class DayViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun updateTimeLimit(timeLimit: Long) {
+        // Runs this code in a background thread
+        viewModelScope.launch(Dispatchers.IO) {
+            val todayDay = repository.getTodayDay()
+            val updatedDay = Day(todayDay.dayId, todayDay.timeWasted, timeLimit, todayDay.application)
+            repository.updateDay(updatedDay)
+        }
+    }
+
 
 }

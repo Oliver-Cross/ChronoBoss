@@ -116,6 +116,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    /*
     override fun onStart() {
 
         super.onStart()
@@ -126,4 +127,5 @@ class MainActivity : AppCompatActivity() {
         serviceIntent.putExtra("varTest", app_budget)
         startService(Intent( this, MakeItWork::class.java ) )
     }
+     */
 }

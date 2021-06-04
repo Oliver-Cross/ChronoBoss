@@ -65,7 +65,8 @@
         android:switchMinWidth="60dp"
         android:thumbTint="#004F2D"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/option_push_notification_text" />
+        app:layout_constraintTop_toTopOf="@+id/option_push_notification_text"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
         android:id="@+id/option_top_package_button"
@@ -87,8 +88,8 @@
         android:layout_marginEnd="25dp"
         android:indeterminate="false"
         android:max="120"
-        android:min="5"
-        android:progress="60"
+        android:min="0"
+        android:progress="@{settingsViewModel.todayLimit}"
         android:progressTint="#545C52"
         android:thumbTint="#004F2D"
         app:layout_constraintEnd_toEndOf="parent"

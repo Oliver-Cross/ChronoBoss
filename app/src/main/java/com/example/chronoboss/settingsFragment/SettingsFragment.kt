@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.R
 import com.example.chronoboss.database.DayDatabase
+import com.example.chronoboss.database.DayViewModel
 import com.example.chronoboss.databinding.FragmentProgressBinding
 import com.example.chronoboss.databinding.FragmentSettingsBinding
 import com.example.chronoboss.statsFragment.StatsViewModel
@@ -37,6 +39,7 @@ private const val ARG_PARAM2 = "param2"
 class SettingsFragment : Fragment() {
 
     private lateinit var binding: FragmentSettingsBinding
+    private lateinit var mDayViewModel: DayViewModel
 
 
     override fun onCreateView(
@@ -53,61 +56,103 @@ class SettingsFragment : Fragment() {
         val viewModelFactory = SettingsViewModelFactory(dataSource, application)
         val settingsViewModel: SettingsViewModel = ViewModelProvider(this, viewModelFactory).get(SettingsViewModel::class.java)
 
+
         var switch = option_push_notifications_switch?.setOnCheckedChangeListener { _, isChecked ->
-            saveData()
+            saveDataToggle()
             Toast.makeText(context, "checkbox changed", Toast.LENGTH_SHORT).show()
         }
 
-        var seekB = option_app_budget_slider?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        //loadData()
+
+
+
+
+
+        var seekC = binding.optionAppBudgetSlider.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 option_app_budget_slider.progress = progress
-                Toast.makeText(context, "value is: " + progress.toString(), Toast.LENGTH_LONG).show()
-                loadData()
-                saveData()
-                Toast.makeText(context, "has this saved?", Toast.LENGTH_SHORT).show()
-
+                Log.i("Settings fata()\n" +
+                        "                saveDatragment C, on progress changed", progress.toString())
+                //loadDa()
+                saveDataSlider()
+                binding.appBudgetSliderValue.text = progress.toString()
             }
+
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
 
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                loadData()
+                //loadData()
             }
         })
 
         binding.settingsViewModel = settingsViewModel
 
-       binding.setLifecycleOwner(this)
 
-         return binding.root
+        binding.setLifecycleOwner(this)
+
+        //saveData()
+
+        return binding.root
 
 
 
     }
 
-    private fun saveData(){
+    private fun saveDataToggle(){
         val sharedPrefs = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        Log.i("save Data toggle", "saved progress. 1" + binding.optionAppBudgetSlider.progress.toString())
         val editor : SharedPreferences.Editor = sharedPrefs?.edit()?:return
+        Log.i("save Data toggle", "saved progress, 2" + binding.optionAppBudgetSlider.progress.toString())
 
-        with(sharedPrefs.edit()){
-            putBoolean("NOTIFICATIONS_KEY", option_push_notifications_switch.isChecked)
-            putInt("APP_BUDGET_KEY", option_app_budget_slider.progress)
+
+        with(editor){
+            //putBoolean("NOTIFICATIONS_KEY", option_push_notifications_switch.isChecked)
+            putBoolean("NOTIFICATIONS_KEY", binding.optionPushNotificationsSwitch.isChecked)
+            //putInt("APP_BUDGET_KEY", option_app_budget_slider.progress)
+            Log.i("save Data toggle", "saved progress, 3" + binding.optionAppBudgetSlider.progress.toString())
         }
+
+
+
+    }
+
+    private fun saveDataSlider(){
+        val sharedPrefs = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        Log.i("save Data slider", "saved progress. 1" + binding.optionAppBudgetSlider.progress.toString())
+        val editor : SharedPreferences.Editor = sharedPrefs?.edit()?:return
+        Log.i("save Data slider", "saved progress, 2" + binding.optionAppBudgetSlider.progress.toString())
+
+
+        with(editor){
+            //putBoolean("NOTIFICATIONS_KEY", option_push_notifications_switch.isChecked)
+            putInt("APP_BUDGET_KEY", binding.optionAppBudgetSlider.progress)
+            Log.i("save Data slider", "saved progress, 3" + binding.optionAppBudgetSlider.progress.toString())
+        }
+
+        mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
+        mDayViewModel.updateTimeLimit(binding.optionAppBudgetSlider.progress.toLong())
+
+
     }
 
     fun loadData(){
         val sharedPrefs = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val saved_notifications_switch = sharedPrefs?.getBoolean("NOTIFICATIONS_KEY",true)
-        val saved_seek_progress = sharedPrefs?.getInt("APP_BUDGET_KEY",120)
+        val saved_seek_progress = sharedPrefs?.getInt("APP_BUDGET_KEY", binding.optionAppBudgetSlider.progress)
+        Log.i("load Data", "loaded progress" + saved_seek_progress.toString())
+
+        //mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
+        //mDayViewModel.updateTimeLimit(binding.optionAppBudgetSlider.progress.toLong())
 
         if (saved_notifications_switch != null) {
-            option_push_notifications_switch.isChecked = saved_notifications_switch
+            binding.optionPushNotificationsSwitch.isChecked = saved_notifications_switch
         }
         if (saved_seek_progress != null) {
-          option_app_budget_slider.progress = saved_seek_progress
-       }
+            binding.optionAppBudgetSlider.progress = saved_seek_progress
+        }
     }
 
 }
