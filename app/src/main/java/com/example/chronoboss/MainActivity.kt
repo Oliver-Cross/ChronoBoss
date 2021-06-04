@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        startService(Intent( this, MakeItWork::class.java ) )
+        //startService(Intent( this, MakeItWork::class.java ) )
 
         //Initialize navigation bar
         /*
@@ -96,6 +96,16 @@ class MainActivity : AppCompatActivity() {
         val view: ImageView = findViewById(R.id.app_icon)
         view.setImageDrawable(getIcon())
     } */
+
+    override fun onResume(){
+        super.onResume()
+        startService(Intent( this, MakeItWork::class.java ) )
+    }
+
+    override fun onPause(){
+        super.onPause()
+        startService(Intent( this, MakeItWork::class.java ))
+    }
 
     fun goQueryStats(view: View) {
         val intent = Intent(this, QueryStatsActivity::class.java)

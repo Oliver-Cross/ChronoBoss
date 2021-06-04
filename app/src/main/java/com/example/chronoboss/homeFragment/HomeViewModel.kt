@@ -28,7 +28,7 @@ class HomeViewModel (
 
 
     val percentageLong = Transformations.map(todayData) {(100 * (it.timeWasted.toFloat() / it.timeLimit.toFloat())).toInt()}
-    val packageName = Transformations.map(todayData) {it.application}
+    val packageName = Transformations.map(todayData) {it.application.substringAfterLast('.')}
 
 
     //First executed when day view model is called

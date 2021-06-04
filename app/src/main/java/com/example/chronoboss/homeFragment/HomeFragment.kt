@@ -92,7 +92,8 @@ class HomeFragment : Fragment() {
             homeViewModel.updateTodayTimeWasted(converted)
         }
 
-        val packageName = topPckNme?.substringAfterLast('.')
+        //val packageName = topPckNme?.substringAfterLast('.')
+        val packageName = topPckNme
         packageName?.let { homeViewModel.setPackageName(it) }
 
         binding.setLifecycleOwner(this)
@@ -126,9 +127,9 @@ class HomeFragment : Fragment() {
         mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
 
         val queryStatsUtils: QueryStatsUtils = QueryStatsUtils()
-        val topPck: UsageStats? = queryStatsUtils.getTopPackage(context)
+        val topPck: UsageStats = queryStatsUtils.getTopPackage(context)
 
-        var tWaste: Long? = topPck?.totalTimeInForeground
+        var tWaste: Long = topPck.totalTimeInForeground
         var converted: Long = 0
         if (tWaste != null) {
             converted = (tWaste.toFloat() / 60000.toFloat()).toLong()
@@ -138,8 +139,9 @@ class HomeFragment : Fragment() {
             mDayViewModel.updateTodayTimeWasted(converted)
         }
 
-        val topPckNme:String? = topPck?.packageName
-        val packageName = topPckNme?.substringAfterLast('.')
+        val topPckNme:String = topPck.packageName
+        val packageName = topPckNme
+        //val packageName = topPckNme?.substringAfterLast('.')
         packageName?.let { mDayViewModel.setPackageName(it) }
 
 

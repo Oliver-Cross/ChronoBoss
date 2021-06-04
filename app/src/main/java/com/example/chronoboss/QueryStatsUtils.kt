@@ -14,7 +14,8 @@ import androidx.annotation.RequiresApi
 
 class QueryStatsUtils {
 
-    val targetPackage: UsageStats? = null
+    lateinit var topPackage:UsageStats
+    //val targetPackage: UsageStats? = null
 
     fun requestUsageStatsPermission(activity: Activity) {
         val intent: Intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
@@ -24,7 +25,7 @@ class QueryStatsUtils {
     fun hasStatsPermission(context: Context, activity: Activity): Boolean {
 
         val applicationInfo: ApplicationInfo? =
-            context?.packageName?.let { activity?.packageManager?.getApplicationInfo(it, 0) }
+            context?.packageName.let { activity?.packageManager?.getApplicationInfo(it, 0) }
         val appOps: AppOpsManager =
             context?.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
         val mode: Int? = applicationInfo?.let {
@@ -48,7 +49,7 @@ class QueryStatsUtils {
         return usageStats
     }
 
-    fun getTimeWasted(context:Context?, beginTime:Long, endTime:Long):Long?{
+    fun getTimeWasted(context:Context, beginTime:Long, endTime:Long):Long{
         val targetPackageName:String = "com.android.chrome"
         var timeWasted:Long = 0
         val statsManager =
@@ -64,7 +65,7 @@ class QueryStatsUtils {
         return timeWasted
     }
 
-    fun getTargetPackage(context: Context?): UsageStats? {
+    /*fun getTargetPackage(context: Context?): UsageStats? {
 
         val usageStats = getStats(context)
         for (pck in usageStats) {
@@ -73,25 +74,24 @@ class QueryStatsUtils {
             }
         }
         return null
-    }
+    } */
 
-    fun getTargetTimeForeground(): Long? {
+    /*fun getTargetTimeForeground(): Long? {
         return targetPackage?.totalTimeInForeground
-    }
+    } */
 
-    @RequiresApi(Build.VERSION_CODES.Q)
+    /*@RequiresApi(Build.VERSION_CODES.Q)
     fun getTargetTimeVisible(): Long? {
         return targetPackage?.totalTimeVisible
-    }
+    } */
 
-    fun getTargetName(): String? {
+    /*fun getTargetName(): String? {
         return targetPackage?.packageName
-    }
+    } */
 
-    fun getTopPackage(context: Context?): UsageStats? {
+    fun getTopPackage(context: Context?): UsageStats {
         val usageStats = getStats(context)
         var timeUsed: Long = 0
-        var topPackage: UsageStats? = null
         for (pck in usageStats) {
             if ((pck.totalTimeInForeground > timeUsed) &&
                 (pck.packageName != "com.google.android.apps.nexuslauncher") &&
@@ -104,21 +104,21 @@ class QueryStatsUtils {
         return topPackage
     }
 
-    fun getTopPackageForeground(context: Context?): Long? {
+    fun getTopPackageForeground(context: Context?): Long {
         val topPck = getTopPackage(context)
-        return topPck?.totalTimeInForeground
+        return topPck.totalTimeInForeground
     }
 
-    fun getTopPackName(context: Context?): String? {
+    fun getTopPackName(context: Context?): String {
         val topPck = getTopPackage(context)
-        return topPck?.packageName
+        return topPck.packageName
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
+    /*@RequiresApi(Build.VERSION_CODES.Q)
     fun getPckTimeVisible(context: Context?): Long? {
         val topPck = getTopPackage(context)
         return topPck?.totalTimeVisible
-    }
+    } */
 }
 
 
