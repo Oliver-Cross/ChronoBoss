@@ -6,16 +6,22 @@ import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ApplicationInfo
+import android.preference.PreferenceManager
 import android.provider.Settings
 
 
-    class QueryStatsUtils {
+    class QueryStatsUtils (testInt:Int?){
+
+
 
         fun requestUsageStatsPermission(activity: Activity) {
             val intent: Intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
             activity.startActivity(intent)
         }
+        var prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        var testVar:Int? = prefs.getInt("APP_BUDGET_KEY", 120)
 
         fun hasStatsPermission(context: Context, activity: Activity): Boolean {
 

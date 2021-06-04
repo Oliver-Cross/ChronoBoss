@@ -10,7 +10,9 @@ import android.content.Intent
 import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.ApplicationInfo
+import android.preference.PreferenceManager
 import android.provider.Settings
 import android.widget.TextView
 
@@ -23,6 +25,9 @@ class QueryStatsFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        var prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        var testVar:Int? = prefs.getInt("APP_BUDGET_KEY", 120)
+        val queryStatsUtils:QueryStatsUtils = QueryStatsUtils(testVar)
         //inflate view
         val view:View = inflater.inflate(R.layout.fragment_query_stats, container, false)
         //check if has stats access, if not request

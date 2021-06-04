@@ -1,8 +1,11 @@
 package com.example.chronoboss.homeFragment
 
 import android.app.usage.UsageStats
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +14,7 @@ import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
+import com.example.chronoboss.MainActivity
 import com.example.chronoboss.QueryStatsUtils
 import com.example.chronoboss.R
 import com.example.chronoboss.database.Day
@@ -23,14 +27,17 @@ class HomeFragment : Fragment() {
 
     private lateinit var mDayViewModel: DayViewModel
     private lateinit var binding: FragmentHomeBinding
+    private var cont: Context? = context
 
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Binding setup
+        var prefs:SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        var testVar:Int? = prefs.getInt("APP_BUDGET_KEY", 120)
+
         binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
             R.layout.fragment_home,container,false)
 
@@ -39,7 +46,7 @@ class HomeFragment : Fragment() {
 
         //val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         //val icon: ImageView = view.findViewById(R.id.app_icon)
-        val queryStatsUtils: QueryStatsUtils = QueryStatsUtils()
+        val queryStatsUtils: QueryStatsUtils = QueryStatsUtils(testVar)
         val topPck:UsageStats? = queryStatsUtils.getTopPackage(context)
         val topPckNme:String? = topPck?.packageName
         val topPackageIcon: Drawable? = topPckNme?.let {

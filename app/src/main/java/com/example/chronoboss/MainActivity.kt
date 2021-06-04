@@ -1,5 +1,6 @@
 package com.example.chronoboss
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
@@ -22,9 +23,12 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var cont:Context
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        cont = this.applicationContext
         setContentView(R.layout.activity_main)
         //Initialize navigation bar
         /*
@@ -95,6 +99,9 @@ class MainActivity : AppCompatActivity() {
         view.setImageDrawable(getIcon())
     } */
 
+    fun getContNow(): Context {
+        return cont
+    }
     fun goQueryStats(view: View) {
         val intent = Intent(this, QueryStatsActivity::class.java)
         startActivity(intent)
