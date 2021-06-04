@@ -16,8 +16,8 @@ class PollingService : Service() {
     val ACTION:String = "com.example.chronoboss.PollingService"
     //private lateinit var mNotification: Notification
     //private lateinit var mManager:NotificationManager
-    var prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-    var testVar:Int? = prefs.getInt("APP_BUDGET_KEY", 120)
+    //var prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+    //var testVar:Int? = prefs.getInt("APP_BUDGET_KEY", 120)
 
     override fun onBind(intent: Intent?): IBinder? {
        return null

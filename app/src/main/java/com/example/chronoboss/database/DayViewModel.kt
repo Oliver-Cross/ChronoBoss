@@ -30,16 +30,20 @@ class DayViewModel(application: Application): AndroidViewModel(application) {
         return readAllData
     }
 
-    suspend fun getTodayDay(): Day {
-        return repository.getTodayDay()
-    }
-
-
     fun updateTodayTimeWasted(timeWasted: Long) {
         // Runs this code in a background thread
         viewModelScope.launch(Dispatchers.IO) {
             val todayDay = repository.getTodayDay()
             val updatedDay = Day(todayDay.dayId, timeWasted, todayDay.timeLimit, todayDay.application)
+            repository.updateDay(updatedDay)
+        }
+    }
+
+    fun updateTimeLimit(timeLimit: Long) {
+        // Runs this code in a background thread
+        viewModelScope.launch(Dispatchers.IO) {
+            val todayDay = repository.getTodayDay()
+            val updatedDay = Day(todayDay.dayId, todayDay.timeWasted, timeLimit, todayDay.application)
             repository.updateDay(updatedDay)
         }
     }

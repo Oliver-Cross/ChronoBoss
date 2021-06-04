@@ -14,97 +14,98 @@
             type="com.example.chronoboss.settingsFragment.SettingsViewModel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#8F95D3"
-    tools:context=".SettingsFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#8F95D3"
+        tools:context=".SettingsFragment">
 
 
-    <TextView
-        android:id="@+id/option_push_notification_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="100dp"
-        android:text="Push Notifications"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/option_push_notification_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="100dp"
+            android:text="Push Notifications"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/option_top_package_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:text="App to track"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/option_push_notification_text" />
+        <TextView
+            android:id="@+id/option_top_package_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:text="App to track"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/option_push_notification_text" />
 
-    <TextView
-        android:id="@+id/option_budget_slider_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:text="App Budget"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/option_top_package_text" />
+        <TextView
+            android:id="@+id/option_budget_slider_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:text="App Budget"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/option_top_package_text" />
 
-    <Switch
-        android:id="@+id/option_push_notifications_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:switchMinWidth="60dp"
-        android:thumbTint="#004F2D"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/option_push_notification_text" />
+        <Switch
+            android:id="@+id/option_push_notifications_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:switchMinWidth="60dp"
+            android:thumbTint="#004F2D"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/option_push_notification_text"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <Button
-        android:id="@+id/option_top_package_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#004F2D"
-        android:text="Get App Info"
-        android:textColor="#D2D0BA"
-        app:layout_constraintBottom_toBottomOf="@+id/option_top_package_text"
-        app:layout_constraintEnd_toEndOf="@+id/option_push_notifications_switch"
-        app:layout_constraintTop_toTopOf="@+id/option_top_package_text" />
+        <Button
+            android:id="@+id/option_top_package_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#004F2D"
+            android:text="Get App Info"
+            android:textColor="#D2D0BA"
+            app:layout_constraintBottom_toBottomOf="@+id/option_top_package_text"
+            app:layout_constraintEnd_toEndOf="@+id/option_push_notifications_switch"
+            app:layout_constraintTop_toTopOf="@+id/option_top_package_text" />
 
-    <SeekBar
-        android:id="@+id/option_app_budget_slider"
-        android:layout_width="250dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="25dp"
-        android:indeterminate="false"
-        android:max="120"
-        android:min="5"
-        android:progress="60"
-        android:progressTint="#545C52"
-        android:thumbTint="#004F2D"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/option_budget_slider_text"
-        app:layout_constraintTop_toTopOf="@+id/option_budget_slider_text" />
+        <SeekBar
+            android:id="@+id/option_app_budget_slider"
+            android:layout_width="250dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="25dp"
+            android:indeterminate="false"
+            android:max="120"
+            android:min="0"
+            android:progress="@{settingsViewModel.todayLimit}"
+            android:progressTint="#545C52"
+            android:thumbTint="#004F2D"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/option_budget_slider_text"
+            app:layout_constraintTop_toTopOf="@+id/option_budget_slider_text" />
 
-    <TextView
-        android:id="@+id/app_budget_slider_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="placeholder: get value from slider"
-        app:layout_constraintEnd_toEndOf="@+id/option_app_budget_slider"
-        app:layout_constraintStart_toStartOf="@+id/option_app_budget_slider"
-        app:layout_constraintTop_toBottomOf="@+id/option_app_budget_slider" />
+        <TextView
+            android:id="@+id/app_budget_slider_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="placeholder: get value from slider"
+            app:layout_constraintEnd_toEndOf="@+id/option_app_budget_slider"
+            app:layout_constraintStart_toStartOf="@+id/option_app_budget_slider"
+            app:layout_constraintTop_toBottomOf="@+id/option_app_budget_slider" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
