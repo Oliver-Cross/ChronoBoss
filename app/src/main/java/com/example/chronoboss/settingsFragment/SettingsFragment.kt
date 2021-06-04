@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.R
@@ -38,6 +39,7 @@ class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
 
 
+    @SuppressLint("UseRequireInsteadOfGet")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,10 +58,11 @@ class SettingsFragment : Fragment() {
             saveData()
         }
 
-        var seekB = option_app_budget_slider?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        var seekBar: SeekBar = view?.findViewById<SeekBar>(R.id.option_app_budget_slider) ?: option_app_budget_slider
+        var seek_bar_text = view?.findViewById<TextView>(R.id.option_budget_slider_text) ?: option_budget_slider_text
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-
-                loadData()
+                seek_bar_text.text = seekBar.toString() + " Minutes"
                 saveData()
 
             }
@@ -69,7 +72,7 @@ class SettingsFragment : Fragment() {
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                loadData()
+                saveData()
             }
         })
 
