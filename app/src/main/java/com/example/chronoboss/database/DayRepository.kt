@@ -6,6 +6,7 @@ class DayRepository(private val dayDao: DayDao) {
 
 
     val readAllData: LiveData<List<Day>> = dayDao.readAllData()
+    val todayData: LiveData<Day> = dayDao.getToday()
 
     suspend fun addDay(day: Day) {
         dayDao.addDay(day)
