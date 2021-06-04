@@ -19,20 +19,18 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 //import android.widget.ImageView
 
+/** main activity launched upon opening, host to home fragment
+ */
 
 class MainActivity : AppCompatActivity() {
 
-
+    /** function called upon initial launch, adds home fragment
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //startService(Intent( this, MakeItWork::class.java ) )
 
         //Initialize navigation bar
-        /*
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_controller) as NavHostFragment
-        val navController = navHostFragment.navController
-        */
         val tablayout: TabLayout = findViewById(R.id.tab_layout_navigation)
         val viewpager: ViewPager2 = findViewById(R.id.view_pager_nav)
         val fm: FragmentManager = supportFragmentManager
@@ -82,31 +80,26 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
-        // val navigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
-        // navigationView.setupWithNavController(navController)
-
     }
 
-    /*fun getIcon():Drawable{
-        return packageManager.getApplicationIcon("com.android.chrome")
-    }
-
-    fun setIcon() {
-        val view: ImageView = findViewById(R.id.app_icon)
-        view.setImageDrawable(getIcon())
-    } */
-
+    /** function called upon activity resuming, begins polling service
+     */
     override fun onResume(){
         super.onResume()
         startService(Intent( this, MakeItWork::class.java ) )
     }
 
+    /** function called when activity paused, begins polling service
+     *
+     */
     override fun onPause(){
         super.onPause()
         startService(Intent( this, MakeItWork::class.java ))
     }
 
+    /** function to open intent to query stats, for testing purposes
+     *
+     */
     fun goQueryStats(view: View) {
         val intent = Intent(this, QueryStatsActivity::class.java)
         startActivity(intent)

@@ -44,6 +44,7 @@ class MakeItWork : Service() {
         this.context = this
     }
 
+    /** called when service ends */
     override fun onDestroy(){
         super.onDestroy()
         job.cancel()
@@ -52,6 +53,7 @@ class MakeItWork : Service() {
     /** task to run once query has been started in MainActivity upon launch
      * queries usage data on given interval and checks against limit
      * if limit has been reached, a message is displayed and the service delays queries
+     * resets limit at midnight
      */
     private val runnableService: Runnable = object : Runnable {
         override fun run() {
@@ -104,7 +106,9 @@ class MakeItWork : Service() {
         }
     }
 
-    /** called when service is started */
+    /** called when service is started
+     * used scope to allow the service (on main thread) access the database (on background thread)
+     */
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         scope.launch {
             val db = Room.databaseBuilder(
@@ -114,10 +118,7 @@ class MakeItWork : Service() {
             ).build()
             appName = (db.dayDao().getTodayDay().application)
             timeLimit = (db.dayDao().getTodayDay().timeLimit)
-            //setLimit = ((db.dayDao().getTodayDay().timeWasted*60000 + (timeLimit*60000)))
         }
-
-        //Toast.makeText(context, appName, Toast.LENGTH_LONG).show()
 
         //create handler instance
         mHandler = Handler()
@@ -126,10 +127,16 @@ class MakeItWork : Service() {
         return START_STICKY
     }
 
+    /** standard function that must be implemented in interface
+     *
+     */
     override fun onBind(intent: Intent): IBinder? {
         return null
     }
 
+    /** companion object to hold values for querying intervals
+     * for now set to frequent values to demonstrate functionality
+     */
     companion object {
         //interval for querying data if limit has not been reached
         var DEFAULT_QUERY_INTERVAL = (10 * 1000).toLong()

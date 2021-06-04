@@ -57,9 +57,9 @@ class HomeFragment : Fragment() {
         //val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         //val icon: ImageView = view.findViewById(R.id.app_icon)
         val queryStatsUtils: QueryStatsUtils = QueryStatsUtils()
-        val topPck:UsageStats? = queryStatsUtils.getTopPackage(context)
-        val topPckNme:String? = topPck?.packageName
-        val topPackageIcon: Drawable? = topPckNme?.let {
+        val topPck:UsageStats = queryStatsUtils.getTopPackage(context)
+        val topPckNme:String = topPck.packageName
+        val topPackageIcon: Drawable? = topPckNme.let {
             activity?.packageManager?.getApplicationIcon(
                 it
             )
@@ -87,7 +87,7 @@ class HomeFragment : Fragment() {
         //Insertion example
         val day = Day(1, 0, 120, "Top Application")
         homeViewModel.addDay(day)
-        var tWaste:Long? = topPck?.totalTimeInForeground
+        var tWaste:Long = topPck.totalTimeInForeground
         var converted:Long = 0
         if(tWaste != null){
             converted = (tWaste.toFloat()/60000.toFloat()).toLong()
