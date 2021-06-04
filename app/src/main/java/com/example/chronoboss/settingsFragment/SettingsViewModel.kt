@@ -7,6 +7,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Transformations
 import com.example.chronoboss.database.DayDao
 
+/**
+ * Interfaces with the room database.
+ */
 class SettingsViewModel (
     val database: DayDao,
     application: Application

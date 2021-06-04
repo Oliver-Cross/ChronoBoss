@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.database.DayDao
 import com.example.chronoboss.statsFragment.StatsViewModel
 
+/**
+ * Creates the settings view model
+ */
 class SettingsViewModelFactory(
 private val dataSource: DayDao,
 private val application: Application

@@ -33,8 +33,7 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SettingsFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Sets and stores the user settings.
  */
 class SettingsFragment : Fragment() {
 
