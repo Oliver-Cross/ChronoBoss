@@ -31,9 +31,9 @@ $dokka.location:com.example.chronoboss.database/DayRepository/updateDay/#com.exa
 $dokka.location:com.example.chronoboss.database/DayViewModel///PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/index.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/DayViewModel/#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/-day-view-model.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/addDay/#com.example.chronoboss.database.Day/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/add-day.html
-$dokka.location:com.example.chronoboss.database/DayViewModel/getTodayDay/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/get-today-day.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/readAllData/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/read-all-data.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/setPackageName/#kotlin.String/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/set-package-name.html
+$dokka.location:com.example.chronoboss.database/DayViewModel/updateTimeLimit/#kotlin.Long/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/update-time-limit.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/updateTodayTimeWasted/#kotlin.Long/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/update-today-time-wasted.html
 $dokka.location:com.example.chronoboss.homeFragment////PointingToDeclaration/app/com.example.chronoboss.homeFragment/index.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeFragment///PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-fragment/index.html
@@ -77,6 +77,7 @@ $dokka.location:com.example.chronoboss.settingsFragment/SettingsFragment/onCreat
 $dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModel///PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model/index.html
 $dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModel/SettingsViewModel/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model/-settings-view-model.html
 $dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModel/database/#/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model/database.html
+$dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModel/todayLimit/#/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model/today-limit.html
 $dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModelFactory///PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model-factory/index.html
 $dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModelFactory/SettingsViewModelFactory/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model-factory/-settings-view-model-factory.html
 $dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModelFactory/create/#java.lang.Class[TypeParam(bounds=[androidx.lifecycle.ViewModel?])]/PointingToDeclaration/app/com.example.chronoboss.settingsFragment/-settings-view-model-factory/create.html
@@ -126,8 +127,6 @@ $dokka.location:com.example.chronoboss/PollingService/ACTION/#/PointingToDeclara
 $dokka.location:com.example.chronoboss/PollingService/PollingService/#/PointingToDeclaration/app/com.example.chronoboss/-polling-service/-polling-service.html
 $dokka.location:com.example.chronoboss/PollingService/onBind/#android.content.Intent?/PointingToDeclaration/app/com.example.chronoboss/-polling-service/on-bind.html
 $dokka.location:com.example.chronoboss/PollingService/onStart/#android.content.Intent?#kotlin.Int/PointingToDeclaration/app/com.example.chronoboss/-polling-service/on-start.html
-$dokka.location:com.example.chronoboss/PollingService/prefs/#/PointingToDeclaration/app/com.example.chronoboss/-polling-service/prefs.html
-$dokka.location:com.example.chronoboss/PollingService/testVar/#/PointingToDeclaration/app/com.example.chronoboss/-polling-service/test-var.html
 $dokka.location:com.example.chronoboss/PollingUtils///PointingToDeclaration/app/com.example.chronoboss/-polling-utils/index.html
 $dokka.location:com.example.chronoboss/PollingUtils/PollingUtils/#/PointingToDeclaration/app/com.example.chronoboss/-polling-utils/-polling-utils.html
 $dokka.location:com.example.chronoboss/PollingUtils/startPollingService/#android.content.Context#kotlin.Long#java.lang.Class[*]#kotlin.String/PointingToDeclaration/app/com.example.chronoboss/-polling-utils/start-polling-service.html
