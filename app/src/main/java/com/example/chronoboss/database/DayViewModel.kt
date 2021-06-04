@@ -30,6 +30,11 @@ class DayViewModel(application: Application): AndroidViewModel(application) {
         return readAllData
     }
 
+    suspend fun getTodayDay(): Day {
+        return repository.getTodayDay()
+    }
+
+
     fun updateTodayTimeWasted(timeWasted: Long) {
         // Runs this code in a background thread
         viewModelScope.launch(Dispatchers.IO) {

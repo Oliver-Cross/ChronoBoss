@@ -52,5 +52,13 @@ class HomeViewModel (
             repository.updateDay(updatedDay)
         }
     }
+
+    fun setPackageName(packageName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val todayDay = database.getTodayDay()
+            val updatedDay = Day(todayDay.dayId, todayDay.timeWasted, todayDay.timeLimit, packageName)
+            repository.updateDay(updatedDay)
+        }
+    }
 }
 

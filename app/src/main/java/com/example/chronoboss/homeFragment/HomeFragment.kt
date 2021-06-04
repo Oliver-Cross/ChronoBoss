@@ -92,6 +92,8 @@ class HomeFragment : Fragment() {
             homeViewModel.updateTodayTimeWasted(converted)
         }
 
+        topPckNme?.let { homeViewModel.setPackageName(it) }
+
         binding.setLifecycleOwner(this)
 
 

@@ -48,6 +48,22 @@ class QueryStatsUtils {
         return usageStats
     }
 
+    fun getTimeWasted(context:Context?, beginTime:Long, endTime:Long):Long?{
+        val targetPackageName:String = "com.android.chrome"
+        var timeWasted:Long = 0
+        val statsManager =
+            context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+        val milliDay = 86400000
+        val usageStats: List<UsageStats> =
+            statsManager.queryUsageStats(UsageStatsManager.INTERVAL_BEST, beginTime, endTime)
+        for(pck in usageStats){
+            if(pck.packageName == targetPackageName){
+                timeWasted = pck.totalTimeInForeground
+            }
+        }
+        return timeWasted
+    }
+
     fun getTargetPackage(context: Context?): UsageStats? {
 
         val usageStats = getStats(context)
