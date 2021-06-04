@@ -8,6 +8,10 @@ import android.content.Intent
 import android.os.Handler
 import android.os.IBinder
 import android.widget.Toast
+import java.time.Duration
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 /** service class that runs upon app launch to track app usage in real time, with the purpose
  * of sending notifications once the time limit has been reached
@@ -15,7 +19,10 @@ import android.widget.Toast
 class MakeItWork : Service() {
 
     private var mHandler: Handler? = null
+    var isMidnight:Boolean = false
+    var setLimit:Long = 50000
     lateinit var context:Context
+
     var limReached:Boolean = false
 
     /** onCreate called when service is created */
@@ -31,9 +38,10 @@ class MakeItWork : Service() {
     private val runnableService: Runnable = object : Runnable {
         override fun run() {
             //replace this with target app from shared preferences
-            val name: String = "com.android.settings"
-            //replace this with limit from shared preferences
-            val limit: Long = 100000
+            var name: String = "com.android.settings"
+            //replace this with limit from settings
+            var limit: Long = 100000
+
             val usage: UsageStatsManager =
                 context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
             var time: Long? = System.currentTimeMillis()
@@ -41,28 +49,43 @@ class MakeItWork : Service() {
                 usage.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, time - 1000 * 1000, it)
             }
             limReached = false
+            val z:ZoneId = ZoneId.of( "Pacific/Auckland")
+            var now:ZonedDateTime = ZonedDateTime.now(z)
+            var tomorrow :LocalDate = now.toLocalDate().plusDays(1);
+            val tomorrowStart: ZonedDateTime = tomorrow.atStartOfDay(z)
+            val duration: Duration = Duration.between(now, tomorrowStart)
+            val millisecondsUntilTomorrow: Long = duration.toMillis()
+
+
             if (stats != null) {
                 for (usageStats in stats) {
                     if (usageStats.packageName == name) {
                         var currentTimeMill: Long? = usageStats.totalTimeInForeground
                         if (currentTimeMill != null) {
+                            if(millisecondsUntilTomorrow <= 0){
+                                isMidnight = true
+                                setLimit = usageStats.totalTimeInForeground + limit
+                                DEFAULT_QUERY_INTERVAL = (60*1000).toLong()
+
+                            }
                             //add check to shared preferences whether notifications are enabled
                             if (currentTimeMill >= limit) {
                                 Toast.makeText(context, "You have reached your limit of " + ((limit)/(60000)).toString() + " minutes!", Toast.LENGTH_LONG).show()
                                 limReached = true
+                                DEFAULT_QUERY_DONE = (millisecondsUntilTomorrow)
                             }
                             //this code is just for testing - can remove later
-                        /*else {
-                                Toast.makeText(context, "limit not reached" + currentTimeMill.toString(), Toast.LENGTH_SHORT)
-                                    .show()
-                            } */
+                            /*else {
+                                    Toast.makeText(context, "limit not reached" + currentTimeMill.toString(), Toast.LENGTH_SHORT)
+                                        .show()
+                                } */
                         }
                     }
                 }
                 if (limReached) {
-                    mHandler!!.postDelayed(this, QUERY_DONE)
+                    mHandler!!.postDelayed(this, DEFAULT_QUERY_DONE)
                 } else {
-                    mHandler!!.postDelayed(this, QUERY_INTERVAL)
+                    mHandler!!.postDelayed(this, DEFAULT_QUERY_INTERVAL)
                 }
             }
         }
@@ -70,6 +93,10 @@ class MakeItWork : Service() {
 
     /** called when service is started */
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+        //limTest = intent.getIntExtra("varTest", 0)
+
+        //Toast.makeText(context, "this is the number: " + limTest, Toast.LENGTH_LONG).show()
+
         //create handler instance
         mHandler = Handler()
         //Execute a runnable task as soon as possible
@@ -83,8 +110,8 @@ class MakeItWork : Service() {
 
     companion object {
         //interval for querying data if limit has not been reached
-        const val QUERY_INTERVAL = (60 * 1000).toLong()
+        var DEFAULT_QUERY_INTERVAL = (60 * 1000).toLong()
         //interval for querying data if limit has not been reached
-        const val QUERY_DONE = (43200000).toLong()
+        var DEFAULT_QUERY_DONE = (43200000).toLong()
     }
 }

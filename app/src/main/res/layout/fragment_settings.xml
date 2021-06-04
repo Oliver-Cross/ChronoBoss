@@ -87,6 +87,7 @@
         android:layout_marginEnd="25dp"
         android:indeterminate="false"
         android:max="120"
+        android:min="5"
         android:progress="60"
         android:progressTint="#545C52"
         android:thumbTint="#004F2D"
