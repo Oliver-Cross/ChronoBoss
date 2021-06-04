@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.R
 import com.example.chronoboss.database.DayDatabase
@@ -44,12 +45,12 @@ class StatsFragment : Fragment() {
 
         val chart = binding.statsGraph
 
-        setLineChartData(chart)
+        setLineChartData(chart, statsViewModel)
 
         return binding.root
     }
     @SuppressLint("ResourceAsColor")
-    fun setLineChartData(line_chart: LineChart){
+    fun setLineChartData(line_chart: LineChart, statsViewModel: StatsViewModel){
 
         val xvalues = ArrayList<String>()
         xvalues.add("Monday")
@@ -64,7 +65,12 @@ class StatsFragment : Fragment() {
                 x: float, y: float, and option for a drawable to make it pretty later
          */
         val lineEntry: ArrayList<Entry> = ArrayList()
-        lineEntry.add(Entry(0f, 90F))
+        val entry = statsViewModel.todayUsageString
+
+        Transformations.map(entry) {
+            lineEntry.add(Entry(0F, it))
+        }
+        lineEntry.add(Entry(0f, 200F))
         lineEntry.add(Entry(1f, 95F))
         lineEntry.add(Entry(2f, 75F))
         lineEntry.add(Entry(3f, 80F))

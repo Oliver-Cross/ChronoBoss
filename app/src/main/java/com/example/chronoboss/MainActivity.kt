@@ -8,15 +8,17 @@ import android.graphics.drawable.Icon
 //import android.content.pm.PackageManager
 //import android.graphics.drawable.Drawable
 import android.view.View
+import android.webkit.WebViewFragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.example.chronoboss.settingsFragment.SettingsFragment
+import com.example.chronoboss.homeFragment.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 //import android.widget.ImageView
 
@@ -30,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         cont = this.applicationContext
         setContentView(R.layout.activity_main)
+        val settings_fragment = supportFragmentManager.findFragmentById(R.id.settingsFragment) as WebViewFragment
+        var app_budget = settings_fragment.option_app_budget_slider.progress
+        val serviceIntent:Intent = Intent(this, MakeItWork::class.java)
+        serviceIntent.putExtra("varTest", app_budget)
+        startService(Intent( this, MakeItWork::class.java ) )
+
         //Initialize navigation bar
         /*
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_controller) as NavHostFragment

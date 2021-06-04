@@ -1,20 +1,24 @@
 package com.example.chronoboss.homeFragment
 
+import android.app.AppOpsManager
 import android.app.usage.UsageStats
 import android.content.Context
-import android.content.SharedPreferences
+import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
-import android.preference.PreferenceManager
+import android.provider.Settings
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
-import com.example.chronoboss.MainActivity
 import com.example.chronoboss.QueryStatsUtils
 import com.example.chronoboss.R
 import com.example.chronoboss.database.Day
@@ -27,17 +31,18 @@ class HomeFragment : Fragment() {
 
     private lateinit var mDayViewModel: DayViewModel
     private lateinit var binding: FragmentHomeBinding
-    private var cont: Context? = context
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Binding setup
-        var prefs:SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-        var testVar:Int? = prefs.getInt("APP_BUDGET_KEY", 120)
 
+        // Binding setup
+        if(!hasPermission()){
+            requestUsageStatsPermission()
+        }
         binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
             R.layout.fragment_home,container,false)
 
@@ -46,7 +51,7 @@ class HomeFragment : Fragment() {
 
         //val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         //val icon: ImageView = view.findViewById(R.id.app_icon)
-        val queryStatsUtils: QueryStatsUtils = QueryStatsUtils(testVar)
+        val queryStatsUtils: QueryStatsUtils = QueryStatsUtils()
         val topPck:UsageStats? = queryStatsUtils.getTopPackage(context)
         val topPckNme:String? = topPck?.packageName
         val topPackageIcon: Drawable? = topPckNme?.let {
@@ -57,7 +62,7 @@ class HomeFragment : Fragment() {
         icon.setImageDrawable(topPackageIcon)
 
 
-
+        Log.i("HomeFragment", "onCreateView Called")
 
 
         // Room database setup
@@ -77,9 +82,15 @@ class HomeFragment : Fragment() {
         //Insertion example
         val day = Day(1050, 40, 200, "chromer2")
         homeViewModel.addDay(day)
-        homeViewModel.updateTodayTimeWasted(100)
+        var tWaste:Long? = topPck?.totalTimeInForeground
+        var converted:Long = 0
+        if(tWaste != null){
+            converted = (tWaste.toFloat()/60000.toFloat()).toLong()
+        }
 
-
+        if (converted != null && converted > 0) {
+            homeViewModel.updateTodayTimeWasted(converted)
+        }
 
         binding.setLifecycleOwner(this)
 
@@ -96,6 +107,58 @@ class HomeFragment : Fragment() {
     fun readAllData(): LiveData<List<Day>> {
         return mDayViewModel.readAllData()
     }
+
+
+    /*
+    override fun onResume(){
+        super.onResume()
+        Log.i("HomeFragment", "onResume Called")
+    }
+    */
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("HomeFragment", "onStart Called")
+
+        mDayViewModel = ViewModelProvider(this).get(DayViewModel::class.java)
+
+        val queryStatsUtils: QueryStatsUtils = QueryStatsUtils()
+        val topPck: UsageStats? = queryStatsUtils.getTopPackage(context)
+
+        var tWaste: Long? = topPck?.totalTimeInForeground
+        var converted: Long = 0
+        if (tWaste != null) {
+            converted = (tWaste.toFloat() / 60000.toFloat()).toLong()
+        }
+
+        if (converted != null && converted > 0) {
+            mDayViewModel.updateTodayTimeWasted(converted)
+        }
+    }
+
+        fun requestUsageStatsPermission() {
+            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+        }
+
+
+
+
+    fun hasPermission():Boolean {
+        val applicationInform: ApplicationInfo? =
+            context?.packageName?.let { activity?.packageManager?.getApplicationInfo(it, 0) }
+        val appOps: AppOpsManager =
+            context?.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+        val mode: Int? = applicationInform?.let {
+            appOps.checkOpNoThrow(
+                AppOpsManager.OPSTR_GET_USAGE_STATS,
+                it.uid,
+                applicationInform.packageName
+            )
+        }
+        return (mode == AppOpsManager.MODE_ALLOWED)
+    }
+
+
 
 
     /*fun getIcon(): Drawable? {

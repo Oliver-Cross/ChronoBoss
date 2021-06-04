@@ -11,8 +11,12 @@ class DayRepository(private val dayDao: DayDao) {
         dayDao.addDay(day)
     }
 
-    suspend fun updateDay(day: Day) {
+    fun updateDay(day: Day) {
         dayDao.update(day)
+    }
+
+    suspend fun getTodayDay(): Day {
+        return dayDao.getTodayDay()
     }
 
 }
