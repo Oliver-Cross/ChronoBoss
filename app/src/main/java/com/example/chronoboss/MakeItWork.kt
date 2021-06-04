@@ -8,6 +8,8 @@ import android.content.Intent
 import android.os.Handler
 import android.os.IBinder
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import kotlin.properties.Delegates
 
 /** service class that runs upon app launch to track app usage in real time, with the purpose
  * of sending notifications once the time limit has been reached
@@ -15,13 +17,14 @@ import android.widget.Toast
 class MakeItWork : Service() {
 
     private var mHandler: Handler? = null
+    var limTest:Int? = 0
     lateinit var context:Context
     var limReached:Boolean = false
-
     /** onCreate called when service is created */
     override fun onCreate() {
         super.onCreate()
         this.context = this
+
     }
 
     /** task to run once query has been started in MainActivity upon launch
@@ -33,6 +36,7 @@ class MakeItWork : Service() {
             //replace this with target app from shared preferences
             val name: String = "com.android.settings"
             //replace this with limit from shared preferences
+
             val limit: Long = 100000
             val usage: UsageStatsManager =
                 context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
@@ -70,6 +74,9 @@ class MakeItWork : Service() {
 
     /** called when service is started */
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+        limTest = intent.getIntExtra("varTest", 0)
+
+        Toast.makeText(context, "this is the number: " + limTest, Toast.LENGTH_LONG).show()
         //create handler instance
         mHandler = Handler()
         //Execute a runnable task as soon as possible
