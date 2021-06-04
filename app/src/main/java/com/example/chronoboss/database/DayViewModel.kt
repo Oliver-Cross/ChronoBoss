@@ -11,12 +11,14 @@ class DayViewModel(application: Application): AndroidViewModel(application) {
 
     private val readAllData: LiveData<List<Day>>
     private val repository: DayRepository
+    private val today: LiveData<Day>
 
     //First executed when day view model is called
     init {
         val dayDao = DayDatabase.getDatabase(application).dayDao()
         repository = DayRepository(dayDao)
         readAllData = repository.readAllData
+        today = repository.todayData
     }
 
     fun addDay(day: Day) {
@@ -28,6 +30,10 @@ class DayViewModel(application: Application): AndroidViewModel(application) {
 
     fun readAllData(): LiveData<List<Day>> {
         return readAllData
+    }
+
+    fun readToday(): LiveData<Day> {
+        return today
     }
 
     fun updateTodayTimeWasted(timeWasted: Long) {
