@@ -11,14 +11,17 @@ import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.pm.ApplicationInfo
+import android.os.Build
 import android.provider.Settings
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 
 /** fragment class that queries usage statistics for the user */
 class QueryStatsFragment() : Fragment() {
 
     /** inflates the fragment for the activity
      */
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -68,19 +71,19 @@ class QueryStatsFragment() : Fragment() {
      *
      */
     fun getTopPackage():UsageStats?{
-        val usageSt = getStats(context)
+        val usageStats = getStats(context)
         var timeUsed:Long = 0
-        var topPack:UsageStats? = null
-        for(pck in usageSt){
-            if((pck.totalTimeInForeground > timeUsed ) &&
+        var topPackage:UsageStats? = null
+        for(pck in usageStats){
+            if((pck.totalTimeInForeground > timeUsed) &&
                 (pck.packageName != "com.google.android.apps.nexuslauncher") &&
-                (pck.packageName != "com.example.chronoboss")){
+                (pck.packageName != "com.example.chronoboss") && (pck.packageName != "com.teslacoilsw.launcher")){
                 timeUsed = pck.totalTimeInForeground
-                topPack = pck
+                topPackage = pck
             }
 
         }
-        return topPack
+        return topPackage
     }
 
     /** function to check whether our app has been granted access to query usage
