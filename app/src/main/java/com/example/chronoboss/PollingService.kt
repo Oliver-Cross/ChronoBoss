@@ -7,13 +7,17 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.IBinder
+import android.preference.PreferenceManager
 import android.widget.Toast
 
 class PollingService : Service() {
     val ACTION:String = "com.example.chronoboss.PollingService"
     //private lateinit var mNotification: Notification
     //private lateinit var mManager:NotificationManager
+    //var prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        //var testVar:Int? = prefs.getInt("APP_BUDGET_KEY", 120)
 
     override fun onBind(intent: Intent?): IBinder? {
        return null
