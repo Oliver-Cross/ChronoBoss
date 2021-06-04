@@ -33,6 +33,7 @@ $dokka.location:com.example.chronoboss.database/DayViewModel/DayViewModel/#andro
 $dokka.location:com.example.chronoboss.database/DayViewModel/addDay/#com.example.chronoboss.database.Day/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/add-day.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/getTodayDay/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/get-today-day.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/readAllData/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/read-all-data.html
+$dokka.location:com.example.chronoboss.database/DayViewModel/setPackageName/#kotlin.String/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/set-package-name.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/updateTodayTimeWasted/#kotlin.Long/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/update-today-time-wasted.html
 $dokka.location:com.example.chronoboss.homeFragment////PointingToDeclaration/app/com.example.chronoboss.homeFragment/index.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeFragment///PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-fragment/index.html
