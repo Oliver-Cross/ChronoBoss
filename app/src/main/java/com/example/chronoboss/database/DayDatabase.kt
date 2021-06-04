@@ -5,14 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+
+/**
+ * This creates the database as a singleton class.
+ * This means that only one instance of the database is used for the whole app.
+ */
 @Database(entities = [Day::class], version = 1, exportSchema = false)
 abstract class DayDatabase: RoomDatabase() {
 
     abstract fun dayDao(): DayDao
 
-    // Everything made in the companion object will be visible to other classes
     companion object{
-        //Make the dayDatabase a singleton class
         @Volatile
         private var INSTANCE: DayDatabase? = null
 

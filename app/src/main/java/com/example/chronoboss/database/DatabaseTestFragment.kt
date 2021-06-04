@@ -20,8 +20,8 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [DatabaseTestFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Used to test database entry via an app fragment.
+ *
  */
 class DatabaseTestFragment : Fragment() {
 

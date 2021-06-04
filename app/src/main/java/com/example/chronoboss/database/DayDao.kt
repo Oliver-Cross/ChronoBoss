@@ -3,6 +3,10 @@ package com.example.chronoboss.database
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
+
+/**
+ * The interface between fragments and the room database.
+ */
 @Dao
 interface DayDao {
 

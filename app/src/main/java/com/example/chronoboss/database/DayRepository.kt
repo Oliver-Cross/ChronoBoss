@@ -2,6 +2,10 @@ package com.example.chronoboss.database
 
 import androidx.lifecycle.LiveData
 
+/**
+ * An interface between the Dao and the view model.
+ * Currently not essential, but used when network traffic is introduced in a later version.
+ */
 class DayRepository(private val dayDao: DayDao) {
 
 
