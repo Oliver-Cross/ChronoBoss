@@ -148,9 +148,9 @@ class HomeFragment : Fragment() {
 
     }
 
-        fun requestUsageStatsPermission() {
-            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
-        }
+    fun requestUsageStatsPermission() {
+        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+    }
 
 
 
