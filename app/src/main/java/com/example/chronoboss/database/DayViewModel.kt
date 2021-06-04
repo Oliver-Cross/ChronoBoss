@@ -44,5 +44,13 @@ class DayViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun setPackageName(packageName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val todayDay = repository.getTodayDay()
+            val updatedDay = Day(todayDay.dayId, todayDay.timeWasted, todayDay.timeLimit, packageName)
+            repository.updateDay(updatedDay)
+        }
+    }
+
 
 }

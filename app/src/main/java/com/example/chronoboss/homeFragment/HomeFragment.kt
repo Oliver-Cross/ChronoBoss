@@ -137,6 +137,13 @@ class HomeFragment : Fragment() {
         if (converted != null && converted > 0) {
             mDayViewModel.updateTodayTimeWasted(converted)
         }
+
+        val topPckNme:String? = topPck?.packageName
+        val packageName = topPckNme?.substringAfterLast('.')
+        packageName?.let { mDayViewModel.setPackageName(it) }
+
+
+
     }
 
         fun requestUsageStatsPermission() {
