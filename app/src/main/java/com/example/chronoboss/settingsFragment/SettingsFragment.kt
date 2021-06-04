@@ -74,7 +74,7 @@ class SettingsFragment : Fragment() {
                 Log.i("Settings fata()\n" +
                         "                saveDatragment C, on progress changed", progress.toString())
                 //loadDa()
-                saveDataSlider()
+                //saveDataSlider()
                 binding.appBudgetSliderValue.text = progress.toString()
             }
 
@@ -84,6 +84,7 @@ class SettingsFragment : Fragment() {
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                saveDataSlider()
                 //loadData()
             }
         })
