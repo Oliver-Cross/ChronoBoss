@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.R
@@ -54,13 +55,16 @@ class SettingsFragment : Fragment() {
 
         var switch = option_push_notifications_switch?.setOnCheckedChangeListener { _, isChecked ->
             saveData()
+            Toast.makeText(context, "checkbox changed", Toast.LENGTH_SHORT).show()
         }
 
         var seekB = option_app_budget_slider?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-
+                option_app_budget_slider.progress = progress
+                Toast.makeText(context, "value is: " + progress.toString(), Toast.LENGTH_LONG).show()
                 loadData()
                 saveData()
+                Toast.makeText(context, "has this saved?", Toast.LENGTH_SHORT).show()
 
             }
 

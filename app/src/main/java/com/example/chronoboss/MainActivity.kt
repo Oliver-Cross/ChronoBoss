@@ -9,6 +9,7 @@ import android.graphics.drawable.Icon
 //import android.graphics.drawable.Drawable
 import android.view.View
 import android.webkit.WebViewFragment
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -32,11 +33,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         cont = this.applicationContext
         setContentView(R.layout.activity_main)
-        val settings_fragment = supportFragmentManager.findFragmentById(R.id.settingsFragment) as WebViewFragment
-        var app_budget = settings_fragment.option_app_budget_slider.progress
+        /*val settings_fragment = supportFragmentManager.findFragmentById(R.id.settingsFragment)
+        var app_budget = settings_fragment?.option_app_budget_slider?.progress
         val serviceIntent:Intent = Intent(this, MakeItWork::class.java)
-        serviceIntent.putExtra("varTest", app_budget)
-        startService(Intent( this, MakeItWork::class.java ) )
+        serviceIntent.putExtra("varTest", app_budget) */
+        //startService(Intent( this, MakeItWork::class.java ) )
 
         //Initialize navigation bar
         /*
@@ -113,5 +114,16 @@ class MainActivity : AppCompatActivity() {
     fun goQueryStats(view: View) {
         val intent = Intent(this, QueryStatsActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onStart() {
+
+        super.onStart()
+        val settings_fragment = supportFragmentManager.findFragmentById(R.id.settingsFragment)
+        var app_budget = settings_fragment?.option_app_budget_slider?.progress
+        //Toast.makeText(cont, "is this set to anything: " + app_budget.toString(), Toast.LENGTH_SHORT).show()
+        val serviceIntent:Intent = Intent(this, MakeItWork::class.java)
+        serviceIntent.putExtra("varTest", app_budget)
+        startService(Intent( this, MakeItWork::class.java ) )
     }
 }
