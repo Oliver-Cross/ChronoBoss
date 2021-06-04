@@ -92,7 +92,8 @@ class HomeFragment : Fragment() {
             homeViewModel.updateTodayTimeWasted(converted)
         }
 
-        topPckNme?.let { homeViewModel.setPackageName(it) }
+        val packageName = topPckNme?.substringAfterLast('.')
+        packageName?.let { homeViewModel.setPackageName(it) }
 
         binding.setLifecycleOwner(this)
 
