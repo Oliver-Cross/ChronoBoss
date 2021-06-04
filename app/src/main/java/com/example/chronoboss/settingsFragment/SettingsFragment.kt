@@ -57,13 +57,19 @@ class SettingsFragment : Fragment() {
         var switch = option_push_notifications_switch?.setOnCheckedChangeListener { _, isChecked ->
             saveData()
         }
-
+/*
         var seekBar: SeekBar = view?.findViewById<SeekBar>(R.id.option_app_budget_slider) ?: option_app_budget_slider
         var seek_bar_text = view?.findViewById<TextView>(R.id.option_budget_slider_text) ?: option_budget_slider_text
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+*/
+        option_app_budget_slider.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                seek_bar_text.text = seekBar.toString() + " Minutes"
-                saveData()
+                if(fromUser) {
+                    option_budget_slider_text.text = seekBar.toString() + " Minutes"
+                    if (seekBar != null) {
+                        seekBar.progress = progress
+                    }
+                    saveData()
+                }
 
             }
 
@@ -93,6 +99,7 @@ class SettingsFragment : Fragment() {
         with(sharedPrefs.edit()){
             putBoolean("NOTIFICATIONS_KEY", option_push_notifications_switch.isChecked)
             putInt("APP_BUDGET_KEY", option_app_budget_slider.progress)
+            apply()
         }
     }
 
