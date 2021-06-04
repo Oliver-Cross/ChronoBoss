@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.database.DayDao
 import com.example.chronoboss.database.DayViewModel
 
+/**
+ * Creates the view model as a single class. Required to set up the binding.
+ */
 class HomeViewModelFactory(
     private val dataSource: DayDao,
     private val application: Application

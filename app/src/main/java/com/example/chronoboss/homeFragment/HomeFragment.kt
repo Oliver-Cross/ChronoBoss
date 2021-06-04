@@ -27,6 +27,11 @@ import com.example.chronoboss.database.DayViewModel
 import com.example.chronoboss.databinding.FragmentHomeBinding
 
 
+/**
+ * Home fragment requests permission on start up.
+ * It inserts a new day on create, and updates it on start.
+ * It also pulls the top package.
+ */
 class HomeFragment : Fragment() {
 
     private lateinit var mDayViewModel: DayViewModel

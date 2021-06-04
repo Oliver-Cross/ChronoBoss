@@ -9,6 +9,10 @@ import com.example.chronoboss.database.DayRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+
+/**
+ * The file that home fragment interfaces with to get live data through a binding in the xml file.
+ */
 class HomeViewModel (
     val database: DayDao,
     application: Application

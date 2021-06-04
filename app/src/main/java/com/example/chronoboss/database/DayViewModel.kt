@@ -7,6 +7,10 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * Database interface that fragments use instead of binding.
+ * All queries are done in a background thread as a coroutine to improve response time.
+ */
 class DayViewModel(application: Application): AndroidViewModel(application) {
 
     private val readAllData: LiveData<List<Day>>
