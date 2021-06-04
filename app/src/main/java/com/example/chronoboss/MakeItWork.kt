@@ -67,9 +67,15 @@ class MakeItWork : LifecycleService() {
         mDayViewModel.readToday().observe(this, Observer {
             timeLimit = it.timeLimit
             Log.i("onstart command", timeLimit.toString())
+            Log.i("run command 0  ", timeLimit.toString())
+
         })
 
         return super.onStartCommand(intent, flags, startId)
+    }
+
+    override fun onBind(intent: Intent): IBinder? {
+        return super.onBind(intent)
     }
 
 
@@ -80,12 +86,15 @@ class MakeItWork : LifecycleService() {
     private val runnableService: Runnable = object : Runnable {
         override fun run() {
 
+            Log.i("run command 1 ", timeLimit.toString())
 
             //replace this with target app from shared preferences
-            Toast.makeText(context, textVar, Toast.LENGTH_LONG).show()
+            Toast.makeText(context, timeLimit.toString(), Toast.LENGTH_LONG).show()
             var name: String = "com.android.settings"
             //replace this with limit from settings
-            var limit: Long = 100000
+            //var limit: Long = 100000
+            var limit = timeLimit
+            Log.i("run command 2 ", timeLimit.toString())
 
             val usage: UsageStatsManager =
                 context?.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
