@@ -113,6 +113,7 @@ $dokka.location:com.example.chronoboss/MakeItWork/MakeItWork/#/PointingToDeclara
 $dokka.location:com.example.chronoboss/MakeItWork/context/#/PointingToDeclaration/app/com.example.chronoboss/-make-it-work/context.html
 $dokka.location:com.example.chronoboss/MakeItWork/isMidnight/#/PointingToDeclaration/app/com.example.chronoboss/-make-it-work/is-midnight.html
 $dokka.location:com.example.chronoboss/MakeItWork/limReached/#/PointingToDeclaration/app/com.example.chronoboss/-make-it-work/lim-reached.html
+$dokka.location:com.example.chronoboss/MakeItWork/onBind/#android.content.Intent/PointingToDeclaration/app/com.example.chronoboss/-make-it-work/on-bind.html
 $dokka.location:com.example.chronoboss/MakeItWork/onCreate/#/PointingToDeclaration/app/com.example.chronoboss/-make-it-work/on-create.html
 $dokka.location:com.example.chronoboss/MakeItWork/onDestroy/#/PointingToDeclaration/app/com.example.chronoboss/-make-it-work/on-destroy.html
 $dokka.location:com.example.chronoboss/MakeItWork/onStartCommand/#android.content.Intent?#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.chronoboss/-make-it-work/on-start-command.html
