@@ -31,6 +31,7 @@ $dokka.location:com.example.chronoboss.database/DayRepository/updateDay/#com.exa
 $dokka.location:com.example.chronoboss.database/DayViewModel///PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/index.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/DayViewModel/#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/-day-view-model.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/addDay/#com.example.chronoboss.database.Day/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/add-day.html
+$dokka.location:com.example.chronoboss.database/DayViewModel/getTodayDay/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/get-today-day.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/readAllData/#/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/read-all-data.html
 $dokka.location:com.example.chronoboss.database/DayViewModel/updateTodayTimeWasted/#kotlin.Long/PointingToDeclaration/app/com.example.chronoboss.database/-day-view-model/update-today-time-wasted.html
 $dokka.location:com.example.chronoboss.homeFragment////PointingToDeclaration/app/com.example.chronoboss.homeFragment/index.html
@@ -48,6 +49,7 @@ $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/addDay/#com.ex
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/database/#/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/database.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/packageName/#/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/package-name.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/percentageLong/#/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/percentage-long.html
+$dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/setPackageName/#kotlin.String/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/set-package-name.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/todayLimitString/#/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/today-limit-string.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/todayUsageString/#/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/today-usage-string.html
 $dokka.location:com.example.chronoboss.homeFragment/HomeViewModel/updateTodayTimeWasted/#kotlin.Long/PointingToDeclaration/app/com.example.chronoboss.homeFragment/-home-view-model/update-today-time-wasted.html
@@ -79,12 +81,14 @@ $dokka.location:com.example.chronoboss.settingsFragment/SettingsViewModelFactory
 $dokka.location:com.example.chronoboss.statsFragment////PointingToDeclaration/app/com.example.chronoboss.statsFragment/index.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsFragment///PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/index.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsFragment/StatsFragment/#/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/-stats-fragment.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsFragment/getTimeWasted/#android.content.Context?#kotlin.Long#kotlin.Long#kotlin.String/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/get-time-wasted.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/on-create-view.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsFragment/setLineChartData/#com.github.mikephil.charting.charts.LineChart#com.example.chronoboss.statsFragment.StatsViewModel/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-fragment/set-line-chart-data.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModel///PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/index.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModel/StatsViewModel/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/-stats-view-model.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModel/allDays/#/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/all-days.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModel/database/#/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/database.html
+$dokka.location:com.example.chronoboss.statsFragment/StatsViewModel/todayWasted/#/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model/today-wasted.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModelFactory///PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model-factory/index.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModelFactory/StatsViewModelFactory/#com.example.chronoboss.database.DayDao#android.app.Application/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model-factory/-stats-view-model-factory.html
 $dokka.location:com.example.chronoboss.statsFragment/StatsViewModelFactory/create/#java.lang.Class[TypeParam(bounds=[androidx.lifecycle.ViewModel?])]/PointingToDeclaration/app/com.example.chronoboss.statsFragment/-stats-view-model-factory/create.html
@@ -141,6 +145,7 @@ $dokka.location:com.example.chronoboss/QueryStatsUtils/getTargetName/#/PointingT
 $dokka.location:com.example.chronoboss/QueryStatsUtils/getTargetPackage/#android.content.Context?/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/get-target-package.html
 $dokka.location:com.example.chronoboss/QueryStatsUtils/getTargetTimeForeground/#/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/get-target-time-foreground.html
 $dokka.location:com.example.chronoboss/QueryStatsUtils/getTargetTimeVisible/#/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/get-target-time-visible.html
+$dokka.location:com.example.chronoboss/QueryStatsUtils/getTimeWasted/#android.content.Context?#kotlin.Long#kotlin.Long/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/get-time-wasted.html
 $dokka.location:com.example.chronoboss/QueryStatsUtils/getTopPackName/#android.content.Context?/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/get-top-pack-name.html
 $dokka.location:com.example.chronoboss/QueryStatsUtils/getTopPackage/#android.content.Context?/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/get-top-package.html
 $dokka.location:com.example.chronoboss/QueryStatsUtils/getTopPackageForeground/#android.content.Context?/PointingToDeclaration/app/com.example.chronoboss/-query-stats-utils/get-top-package-foreground.html
