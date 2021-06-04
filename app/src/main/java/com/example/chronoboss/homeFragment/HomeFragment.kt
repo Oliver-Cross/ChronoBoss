@@ -80,7 +80,7 @@ class HomeFragment : Fragment() {
         binding.homeViewModel = homeViewModel
 
         //Insertion example
-        val day = Day(1050, 40, 200, "chromer2")
+        val day = Day(1, 0, 120, "Top Application")
         homeViewModel.addDay(day)
         var tWaste:Long? = topPck?.totalTimeInForeground
         var converted:Long = 0
@@ -148,9 +148,9 @@ class HomeFragment : Fragment() {
 
     }
 
-        fun requestUsageStatsPermission() {
-            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
-        }
+    fun requestUsageStatsPermission() {
+        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+    }
 
 
 
