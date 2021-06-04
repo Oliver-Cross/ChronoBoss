@@ -23,6 +23,7 @@ import com.github.mikephil.charting.charts.*
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -66,13 +67,13 @@ class StatsFragment : Fragment() {
     fun setLineChartData(line_chart: LineChart, statsViewModel: StatsViewModel) {
 
         val xvalues = ArrayList<String>()
-        xvalues.add("Monday")
-        xvalues.add("Tuesday")
-        xvalues.add("Wednesday")
-        xvalues.add("Thursday")
-        xvalues.add("Friday")
-        xvalues.add("Saturday")
-        xvalues.add("Sunday")
+        xvalues.add("Mon")
+        xvalues.add("Tue")
+        xvalues.add("Wed")
+        xvalues.add("Thu")
+        xvalues.add("Fri")
+        xvalues.add("Sat")
+        xvalues.add("Sun")
 
         /* Line entry: requires an object Entry, has constructors:
                 x: float, y: float, and option for a drawable to make it pretty later
@@ -134,7 +135,6 @@ class StatsFragment : Fragment() {
 
 
 
-
         sixDaysAgoWasted?.let { Entry(0f, it) }?.let { lineEntry.add(it) }
         fiveDaysAgoWasted?.let { Entry(1f, it) }?.let { lineEntry.add(it) }
         fourDaysAgoWasted?.let { Entry(2f, it) }?.let { lineEntry.add(it) }
@@ -146,12 +146,15 @@ class StatsFragment : Fragment() {
 
 
 
+
         val progressDataSet = LineDataSet(lineEntry, "Minutes Remaining")
         progressDataSet.color = resources.getColor(R.color.teal_200)
+        //progressDataSet.x = xvalues.toString()
 
         val data = LineData(progressDataSet)
 
         line_chart.data = data
+        line_chart.xAxis.valueFormatter = IndexAxisValueFormatter(xvalues)
         line_chart.setBackgroundColor(R.color.white)
         line_chart.animateXY(2000, 2000)
 
