@@ -104,7 +104,9 @@ class QueryStatsUtils {
         return targetPackage?.packageName
     } */
 
-    /** function that pulls
+    /** function that pulls usage statistics then returns the top package used
+     *
+     */
     fun getTopPackage(context: Context?): UsageStats {
         val usageStats = getStats(context)
         var timeUsed: Long = 0
@@ -120,11 +122,17 @@ class QueryStatsUtils {
         return topPackage
     }
 
+    /** returns the time in foreground for the top package used
+     *
+     */
     fun getTopPackageForeground(context: Context?): Long {
         val topPck = getTopPackage(context)
         return topPck.totalTimeInForeground
     }
 
+    /** returns the package name for the top package used
+     *
+     */
     fun getTopPackName(context: Context?): String {
         val topPck = getTopPackage(context)
         return topPck.packageName
