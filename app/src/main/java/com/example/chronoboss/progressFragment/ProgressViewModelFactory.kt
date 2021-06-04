@@ -6,6 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.chronoboss.database.DayDao
 import com.example.chronoboss.homeFragment.HomeViewModel
 
+
+/**
+ * Creates the progress view model.
+ */
 class ProgressViewModelFactory(
     private val dataSource: DayDao,
     private val application: Application

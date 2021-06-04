@@ -15,7 +15,9 @@ import com.example.chronoboss.databinding.FragmentProgressBinding
 import com.example.chronoboss.homeFragment.HomeViewModel
 import com.example.chronoboss.homeFragment.HomeViewModelFactory
 
-
+/**
+ * Displays a sum of time saved in the UI. Calculated from a room query.
+ */
 class ProgressFragment : Fragment() {
 
     private lateinit var binding: FragmentProgressBinding
