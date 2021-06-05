@@ -79,7 +79,7 @@ class MakeItWork : Service() {
                         var currentTimeMill: Long = usageStats.totalTimeInForeground
                         if (currentTimeMill != null) {
                             Toast.makeText(context, "not null", Toast.LENGTH_LONG)
-                            if(millisecondsUntilTomorrow <= 0){
+                            if((millisecondsUntilTomorrow < 90000) || millisecondsUntilTomorrow > 86310000){
                                 isMidnight = true
                                 //setLimit = usageStats.totalTimeInForeground + timeLimit
                                 DEFAULT_QUERY_INTERVAL = (millisecondsUntilTomorrow).toLong()
